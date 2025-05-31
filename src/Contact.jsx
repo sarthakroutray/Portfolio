@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 function Contact() {
@@ -8,15 +7,15 @@ function Contact() {
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: 100 }}
       transition={{ duration: 0.5 }}
-      className="absolute inset-0"
+      className="py-8"
     >
       {/* Contact Page Content */}
-      <div className="absolute text-lg text-white font-normal text-left" style={{ top: '20%', left: '7%', width: '80%', filter: 'drop-shadow(0 0 3px rgba(0, 255, 255, 0.7))' }}>
+      <div className="text-lg text-white font-normal text-left" style={{ filter: 'drop-shadow(0 0 3px rgba(0, 255, 255, 0.7))' }}>
         <h2 className="text-5xl font-black text-white leading-none mb-4" style={{ filter: 'drop-shadow(0 0 5px rgba(0, 255, 255, 0.7))' }}>Get in Touch</h2>
-        <p>You can reach me via email or connect with me on social media.</p>
-        <p>Email: <a href="mailto:sarthak.routray2006@gmail.com" className="hover:underline text-gray-200" style={{ filter: 'drop-shadow(0 0 2px rgba(0, 255, 255, 0.7))' }}>sarthak.routray2006@gmail.com</a></p>
-        <div className="text-xs mb-0 text-left mt-4">
-            <a href="https://github.com/sarthakroutray" className="hover:underline text-gray-200" style={{ filter: 'drop-shadow(0 0 2px rgba(0, 255, 255, 0.7))' }}>Github</a>,{' '}
+        <p className="mb-4">You can reach me via email or connect with me on social media.</p>
+        <p className="mb-4">Email: <a href="mailto:sarthak.routray2006@gmail.com" className="hover:underline text-gray-200" style={{ filter: 'drop-shadow(0 0 2px rgba(0, 255, 255, 0.7))' }}>sarthak.routray2006@gmail.com</a></p>
+        <div className="text-left mt-8">
+            <a href="https://github.com/sarthakroutray" className="hover:underline text-gray-200 mr-4" style={{ filter: 'drop-shadow(0 0 2px rgba(0, 255, 255, 0.7))' }}>Github</a>
             <a href="https://instagram.com/sarthakroutray1809" className="hover:underline text-gray-200" style={{ filter: 'drop-shadow(0 0 2px rgba(255, 0, 255, 0.7))' }}>Instagram</a>
         </div>
       </div>
