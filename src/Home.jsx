@@ -7,15 +7,15 @@ function Home() {
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: 100 }}
       transition={{ duration: 0.5 }}
-      className="relative w-full h-full"
+      className="flex flex-col md:flex-row items-center justify-center h-full w-full px-4 md:px-0"
     >
       {/* Left Content Section: Name and Get in touch */}
-      <div className="absolute text-left" style={{ top: '20%', left: '7%', width: '45%' }}>
+      <div className="text-center md:text-left md:w-1/2 lg:w-2/5 mb-8 md:mb-0 md:mr-8 md:-mt-24">
         <h1 className="text-5xl md:text-6xl font-black text-white leading-none mb-8" style={{ filter: 'drop-shadow(0 0 5px rgba(0, 255, 255, 0.7))' }}>
           Sarthak<br />Routray
         </h1>
 
-        <div className="mt-16">
+        <div className="mt-8 md:mt-16">
           <div className="text-xs text-gray-200 mb-1" style={{ filter: 'drop-shadow(0 0 2px rgba(255, 0, 255, 0.7))' }}>Get in touch</div>
           <div className="text-xs">
             <a href="https://github.com/sarthakroutray" className="hover:underline text-gray-200" style={{ filter: 'drop-shadow(0 0 2px rgba(0, 255, 255, 0.7))' }}>Github</a>,{' '}
@@ -25,7 +25,7 @@ function Home() {
       </div>
 
       {/* Right Content Section: Description */}
-      <div className="absolute text-lg text-white font-normal text-left" style={{ top: '55%', right: '10%', width: '35%', filter: 'drop-shadow(0 0 3px rgba(0, 255, 255, 0.7))' }}>
+      <div className="text-lg text-white font-normal text-center md:text-left md:w-1/2 lg:w-2/5 md:mt-40" style={{ filter: 'drop-shadow(0 0 3px rgba(0, 255, 255, 0.7))' }}>
         I'm Sarthak Routray, a Computer Science undergraduate at Manipal University Jaipur with a passion for technology and coding. I love building creative, efficient software and constantly explore new tools to grow and contribute to the tech community.
       </div>
     </motion.div>
