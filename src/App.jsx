@@ -29,7 +29,7 @@ function AppContent() {
       <div className="bg-white w-[90vw] h-[88vh] max-w-[1200px] max-h-[650px] rounded-xl relative flex flex-col" style={{ boxShadow: '0 0 30px rgba(255, 0, 255, 0.6), 0 0 60px rgba(0, 255, 255, 0.4)', background: 'rgba(255, 255, 255, 0.05)', backdropFilter: 'blur(10px)' }}>
         {/* Global Header - fixed at top within the flex container */}
         <header className="px-4 pt-8 pb-4 z-10 md:px-16"> 
-          <nav className="space-x-4 text-sm font-normal mt-2 md:space-x-8">
+          <nav className="flex justify-center md:justify-start space-x-4 text-sm font-normal mt-2 md:space-x-8">
             <Link to="/" className={`hover:underline text-gray-200 ${location.pathname === '/' ? 'text-cyan-400' : ''}`} style={{ filter: 'drop-shadow(0 0 3px rgba(255, 0, 255, 0.7))' }}>Home</Link>
             <Link to="/about" className={`hover:underline text-gray-200 ${location.pathname === '/about' ? 'text-cyan-400' : ''}`} style={{ filter: 'drop-shadow(0 0 3px rgba(0, 255, 255, 0.7))' }}>About</Link>
             <Link to="/skills" className={`hover:underline text-gray-200 ${location.pathname === '/skills' ? 'text-cyan-400' : ''}`} style={{ filter: 'drop-shadow(0 0 3px rgba(0, 255, 255, 0.7))' }}>Skills</Link>
