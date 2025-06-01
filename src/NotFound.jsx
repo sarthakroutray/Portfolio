@@ -8,10 +8,10 @@ function NotFound() {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 50 }}
       transition={{ duration: 0.5 }}
-      className="absolute inset-0 flex flex-col items-center justify-center text-white"
+      className="absolute inset-0 flex flex-col items-center justify-center bg-clip-text text-transparent bg-gradient-purple-blue"
     >
-      <h1 className="text-9xl font-extrabold" style={{ filter: 'drop-shadow(0 0 5px rgba(0, 255, 255, 0.7))' }}>404</h1>
-      <p className="text-2xl md:text-3xl font-light mt-4 mb-8 text-center" style={{ filter: 'drop-shadow(0 0 3px rgba(0, 255, 255, 0.7))' }}>
+      <h1 className="text-9xl font-extrabold bg-clip-text text-transparent bg-gradient-purple-blue" style={{ filter: 'drop-shadow(0 0 5px rgba(0, 255, 255, 0.7))' }}>404</h1>
+      <p className="text-2xl md:text-3xl font-light mt-4 mb-8 text-center bg-clip-text text-transparent bg-gradient-purple-blue" style={{ filter: 'drop-shadow(0 0 3px rgba(0, 255, 255, 0.7))' }}>
         Oops! The page you're looking for doesn't exist.
       </p>
       <img src="/Style Ninja GIF by AGoodDoctorBTC.gif" alt="Animated GIF" className="w-64 h-64 mb-8" />

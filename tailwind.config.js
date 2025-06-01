@@ -5,7 +5,11 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'gradient-purple-blue': 'linear-gradient(to right, #F5F0FF, #F0FFFF)', // Even more lighter (almost white), neon purple to blue gradient
+      },
+    },
   },
   plugins: [],
 }; 

@@ -11,21 +11,21 @@ function Home() {
     >
       {/* Left Content Section: Name and Get in touch */}
       <div className="text-center md:text-left md:w-1/2 lg:w-2/5 mb-8 md:mb-0 md:mr-8 md:-mt-24">
-        <h1 className="text-5xl md:text-6xl font-black text-white leading-none mb-8" style={{ filter: 'drop-shadow(0 0 5px rgba(0, 255, 255, 0.7))' }}>
+        <h1 className="text-5xl md:text-6xl font-black bg-clip-text text-transparent bg-gradient-purple-blue leading-none mb-8" style={{ filter: 'drop-shadow(0 0 5px rgba(0, 255, 255, 0.7))' }}>
           Sarthak<br />Routray
         </h1>
 
         <div className="mt-8 md:mt-16">
-          <div className="text-xs text-gray-200 mb-1" style={{ filter: 'drop-shadow(0 0 2px rgba(255, 0, 255, 0.7))' }}>Get in touch</div>
+          <div className="text-xs bg-clip-text text-transparent bg-gradient-purple-blue mb-1" style={{ filter: 'drop-shadow(0 0 2px rgba(255, 0, 255, 0.7))' }}>Get in touch</div>
           <div className="text-xs">
-            <a href="https://github.com/sarthakroutray" className="hover:underline text-gray-200" style={{ filter: 'drop-shadow(0 0 2px rgba(0, 255, 255, 0.7))' }}>Github</a>,{' '}
-            <a href="https://instagram.com/sarthakroutray1809" className="hover:underline text-gray-200" style={{ filter: 'drop-shadow(0 0 2px rgba(255, 0, 255, 0.7))' }}>Instagram</a>
+            <a href="https://github.com/sarthakroutray" className="hover:underline bg-clip-text text-transparent bg-gradient-purple-blue" style={{ filter: 'drop-shadow(0 0 2px rgba(0, 255, 255, 0.7))' }}>Github</a>,{' '}
+            <a href="https://instagram.com/sarthakroutray1809" className="hover:underline bg-clip-text text-transparent bg-gradient-purple-blue" style={{ filter: 'drop-shadow(0 0 2px rgba(255, 0, 255, 0.7))' }}>Instagram</a>
           </div>
         </div>
       </div>
 
       {/* Right Content Section: Description */}
-      <div className="text-lg text-white font-normal text-center md:text-left md:w-1/2 lg:w-2/5 md:mt-40" style={{ filter: 'drop-shadow(0 0 3px rgba(0, 255, 255, 0.7))' }}>
+      <div className="text-lg font-normal text-center md:text-left md:w-1/2 lg:w-2/5 bg-clip-text text-transparent bg-gradient-purple-blue md:mt-40" style={{ filter: 'drop-shadow(0 0 3px rgba(0, 255, 255, 0.7))' }}>
         I'm Sarthak Routray, a Computer Science undergraduate at Manipal University Jaipur with a passion for technology and coding. I love building creative, efficient software and constantly explore new tools to grow and contribute to the tech community.
       </div>
     </motion.div>
