@@ -17,6 +17,7 @@ function Contact() {
         <div className="text-center md:text-left mt-8">
             <a href="https://github.com/sarthakroutray" className="hover:underline bg-clip-text text-transparent bg-gradient-purple-blue mr-4" style={{ filter: 'drop-shadow(0 0 2px rgba(0, 255, 255, 0.7))' }}>Github</a>
             <a href="https://instagram.com/sarthakroutray1809" className="hover:underline bg-clip-text text-transparent bg-gradient-purple-blue" style={{ filter: 'drop-shadow(0 0 2px rgba(255, 0, 255, 0.7))' }}>Instagram</a>
+            <a href="https://www.linkedin.com/in/sarthak-routray-020583323/" className="hover:underline bg-clip-text text-transparent bg-gradient-purple-blue mr-4" style={{ filter: 'drop-shadow(0 0 2px rgba(0, 255, 255, 0.7))' }}>LinkedIn</a>
         </div>
       </div>
     </motion.div>
