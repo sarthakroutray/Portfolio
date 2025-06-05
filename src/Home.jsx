@@ -18,8 +18,8 @@ function Home() {
         <div className="mt-8 md:mt-16">
           <div className="text-xs bg-clip-text text-transparent bg-gradient-purple-blue mb-1" style={{ filter: 'drop-shadow(0 0 2px rgba(255, 0, 255, 0.7))' }}>Get in touch</div>
           <div className="text-xs">
-            <a href="https://github.com/sarthakroutray" className="hover:underline bg-clip-text text-transparent bg-gradient-purple-blue" style={{ filter: 'drop-shadow(0 0 2px rgba(0, 255, 255, 0.7))' }}>Github</a>,{' '}
-            <a href="https://instagram.com/sarthakroutray1809" className="hover:underline bg-clip-text text-transparent bg-gradient-purple-blue" style={{ filter: 'drop-shadow(0 0 2px rgba(255, 0, 255, 0.7))' }}>Instagram</a>,{' '}
+            <a href="https://github.com/sarthakroutray" className="hover:underline bg-clip-text text-transparent bg-gradient-purple-blue" style={{ filter: 'drop-shadow(0 0 2px rgba(0, 255, 255, 0.7))' }}>Github</a><span style={{ color: '#ff69b4' }}>,</span>{' '}
+            <a href="https://instagram.com/sarthakroutray1809" className="hover:underline bg-clip-text text-transparent bg-gradient-purple-blue" style={{ filter: 'drop-shadow(0 0 2px rgba(255, 0, 255, 0.7))' }}>Instagram</a><span style={{ color: '#ff69b4' }}>,</span>{' '}
             <a href="https://www.linkedin.com/in/sarthak-routray-020583323/" className="hover:underline bg-clip-text text-transparent bg-gradient-purple-blue" style={{ filter: 'drop-shadow(0 0 2px rgba(0, 255, 255, 0.7))' }}>LinkedIn</a>
           </div>
         </div>
