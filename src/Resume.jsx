@@ -80,25 +80,10 @@ function Resume() {
         <p className="text-lg bg-clip-text text-transparent bg-gradient-purple-blue mb-2" style={{ filter: 'drop-shadow(0 0 3px rgba(255, 0, 255, 0.7))' }}>
           Computer Science Engineering Student
         </p>
-        <div className="text-sm text-white opacity-80 mb-4">
+        <div className="text-sm text-white opacity-80 mb-6">
           <p>📧 sarthak.routray2006@gmail.com | 📱 +91 9819362168</p>
           <p>📍 Mumbai | 🌐 GitHub: github.com/sarthakroutray</p>
           <p>💼 LinkedIn: linkedin.com/in/sarthak-routray-020583323</p>
-        </div>
-        <div className="flex justify-center space-x-4 mb-6">
-          <button 
-            onClick={() => window.print()}
-            className="px-4 py-2 bg-white bg-opacity-20 backdrop-blur-md rounded-lg text-white text-sm hover:bg-opacity-30 transition-all duration-300"
-            style={{ filter: 'drop-shadow(0 0 3px rgba(0, 255, 255, 0.7))' }}>
-            Print Resume
-          </button>
-          <a 
-            href="/Sarthak_Routray_Resume.pdf" 
-            download="Sarthak_Routray_Resume.pdf"
-            className="px-4 py-2 bg-white bg-opacity-20 backdrop-blur-md rounded-lg text-white text-sm hover:bg-opacity-30 transition-all duration-300 inline-block"
-            style={{ filter: 'drop-shadow(0 0 3px rgba(255, 0, 255, 0.7))' }}>
-            Download PDF
-          </a>
         </div>
       </div>
 
