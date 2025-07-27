@@ -9,7 +9,6 @@ function Home() {
       transition={{ duration: 0.5 }}
       className="flex flex-col md:flex-row items-center justify-center h-full w-full px-4 md:px-0"
     >
-      {/* Left Content Section: Name and Get in touch */}
       <div className="text-center md:text-left md:w-1/2 lg:w-2/5 mb-8 md:mb-0 md:mr-8 md:-mt-24">
         <h1 className="text-5xl md:text-6xl font-black bg-clip-text text-transparent bg-gradient-purple-blue leading-none mb-8" style={{ filter: 'drop-shadow(0 0 5px rgba(0, 255, 255, 0.7))' }}>
           Sarthak<br />Routray
@@ -25,9 +24,8 @@ function Home() {
         </div>
       </div>
 
-      {/* Right Content Section: Description */}
       <div className="text-lg font-normal text-center md:text-left md:w-1/2 lg:w-2/5 bg-clip-text text-transparent bg-gradient-purple-blue md:mt-40" style={{ filter: 'drop-shadow(0 0 3px rgba(0, 255, 255, 0.7))' }}>
-        I'm Sarthak Routray, a Computer Science undergraduate at Manipal University Jaipur with a passion for technology and coding. I love building creative, efficient software and constantly explore new tools to grow and contribute to the tech community.
+        I am Sarthak Routray, a passionate Computer Science undergraduate at Manipal University Jaipur. With a strong enthusiasm for technology and coding, I continuously seek opportunities to expand my skills and apply them to real-world projects.
       </div>
     </motion.div>
   );

@@ -20,7 +20,6 @@ function Skills() {
       transition={{ duration: 0.5 }}
       className="flex flex-col items-center justify-center py-4 md:py-8 w-full"
     >
-      {/* Skills Page Content */}
       <div className="text-lg font-normal w-[90%] md:w-[80%] max-w-4xl overflow-y-auto px-4 bg-clip-text text-transparent bg-gradient-purple-blue" style={{ filter: 'drop-shadow(0 0 3px rgba(0, 255, 255, 0.7))' }}>
         <h2 className="text-5xl font-black bg-clip-text text-transparent bg-gradient-purple-blue leading-none mb-8 text-center" style={{ filter: 'drop-shadow(0 0 5px rgba(0, 255, 255, 0.7))' }}>My Skills</h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 justify-items-center">
