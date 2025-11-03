@@ -16,6 +16,10 @@ const Contact = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
+  const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+  const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+  const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
   const validateEmail = (email) => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   };
@@ -44,8 +48,8 @@ const Contact = () => {
     setLoading(true);
     emailjs
       .send(
-        'service_s3mc40p',
-        'template_nvnrnvd',
+        SERVICE_ID,
+        TEMPLATE_ID,
         {
           from_name: form.name,
           to_name: "Sarthak Routray",
@@ -53,7 +57,7 @@ const Contact = () => {
           to_email: "sarthak.routray2006@gmail.com",
           message: form.message,
         },
-        'oj1zEh3gWEb5p2bRO'
+        PUBLIC_KEY
       )
       .then(
         () => {
