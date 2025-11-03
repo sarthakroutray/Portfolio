@@ -27,18 +27,27 @@ const AppRoutes = () => {
   );
 };
 
+function AppContent() {
+  const location = useLocation();
+  const shouldShowStars = !['/skills', '/projects'].includes(location.pathname);
+
+  return (
+    <div className="relative min-h-screen bg-primary">
+      <div className="fixed inset-0 z-0">
+        {shouldShowStars && <StarsCanvas />}
+      </div>
+      <div className="relative z-10">
+        <Navbar />
+        <AppRoutes />
+      </div>
+    </div>
+  );
+}
+
 function App() {
   return (
     <Router>
-      <div className="relative min-h-screen bg-primary">
-        <div className="fixed inset-0 z-0">
-          <StarsCanvas />
-        </div>
-        <div className="relative z-10">
-          <Navbar />
-          <AppRoutes />
-        </div>
-      </div>
+      <AppContent />
     </Router>
   );
 }
