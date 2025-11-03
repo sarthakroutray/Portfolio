@@ -8,7 +8,13 @@ import { textVariant } from "./utils/motion";
 
 const Tech = () => {
   return (
-    <div className={`${styles.padding} max-w-7xl mx-auto relative z-0`}>
+    <motion.div
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      viewport={{ once: false, amount: 0.2 }}
+      className={`${styles.padding} max-w-7xl mx-auto relative z-0`}
+    >
       <span className='hash-span' id='skills'>
         &nbsp;
       </span>
@@ -17,14 +23,14 @@ const Tech = () => {
         <h2 className={styles.sectionHeadText}>Skills.</h2>
       </motion.div>
       
-      <div className='flex flex-row flex-wrap justify-center gap-10 mt-20'>
+      <div className='flex flex-row flex-wrap justify-center gap-4 sm:gap-10 mt-20'>
         {technologies.map((technology) => (
-          <div className='w-28 h-28' key={technology.name}>
+          <div className='w-20 h-20 sm:w-28 sm:h-28' key={technology.name}>
             <BallCanvas icon={technology.icon} />
           </div>
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 };
 

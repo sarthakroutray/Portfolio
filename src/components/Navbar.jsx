@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
 
 import { styles } from "../styles";
 import { navLinks } from "../constants";
@@ -9,16 +8,6 @@ const Navbar = () => {
   const [active, setActive] = useState("");
   const [toggle, setToggle] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const location = useLocation();
-
-  useEffect(() => {
-    // Update active state based on current route
-    const currentPath = location.pathname;
-    const currentNav = navLinks.find(nav => `/${nav.id}` === currentPath || (currentPath === '/' && nav.id === 'home'));
-    if (currentNav) {
-      setActive(currentNav.title);
-    }
-  }, [location]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,12 +17,34 @@ const Navbar = () => {
       } else {
         setScrolled(false);
       }
+
+      // Update active nav based on scroll position
+      for (const nav of navLinks) {
+        const section = document.getElementById(nav.id);
+        if (section) {
+          const { offsetTop, offsetHeight } = section;
+          if (scrollTop >= offsetTop - 100 && scrollTop < offsetTop + offsetHeight - 100) {
+            setActive(nav.title);
+            break;
+          }
+        }
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
-
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleSmoothScroll = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+      setActive(
+        navLinks.find((nav) => nav.id === id)?.title || ""
+      );
+    }
+    setToggle(false);
+  };
 
   return (
     <nav
@@ -44,19 +55,18 @@ const Navbar = () => {
       }`}
     >
       <div className='w-full flex justify-between items-center max-w-7xl mx-auto'>
-        <Link
-          to='/'
+        <button
           className='flex items-center gap-2'
           onClick={() => {
+            handleSmoothScroll("home");
             setActive("");
-            window.scrollTo(0, 0);
           }}
         >
           <img src="/vite.svg" alt='logo' className='w-9 h-9 object-contain' />
           <p className='text-white text-[18px] font-bold cursor-pointer flex '>
             Sarthak &nbsp;
           </p>
-        </Link>
+        </button>
 
         <ul className='list-none hidden sm:flex flex-row gap-10'>
           {navLinks.map((nav) => (
@@ -64,11 +74,10 @@ const Navbar = () => {
               key={nav.id}
               className={`${
                 active === nav.title ? "text-white" : "text-secondary"
-              } hover:text-white text-[18px] font-medium cursor-pointer`}
+              } hover:text-white text-[18px] font-medium cursor-pointer transition-colors`}
+              onClick={() => handleSmoothScroll(nav.id)}
             >
-              <Link to={nav.id === 'home' ? '/' : `/${nav.id}`} onClick={() => setActive(nav.title)}>
-                {nav.title}
-              </Link>
+              {nav.title}
             </li>
           ))}
         </ul>
@@ -77,7 +86,7 @@ const Navbar = () => {
           <img
             src={toggle ? close : menu}
             alt='menu'
-            className='w-[28px] h-[28px] object-contain'
+            className='w-[28px] h-[28px] object-contain cursor-pointer'
             onClick={() => setToggle(!toggle)}
           />
 
@@ -92,13 +101,10 @@ const Navbar = () => {
                   key={nav.id}
                   className={`font-poppins font-medium cursor-pointer text-[16px] ${
                     active === nav.title ? "text-white" : "text-secondary"
-                  }`}
-                  onClick={() => {
-                    setToggle(!toggle);
-                    setActive(nav.title);
-                  }}
+                  } hover:text-white transition-colors`}
+                  onClick={() => handleSmoothScroll(nav.id)}
                 >
-                  <Link to={nav.id === 'home' ? '/' : `/${nav.id}`}>{nav.title}</Link>
+                  {nav.title}
                 </li>
               ))}
             </ul>

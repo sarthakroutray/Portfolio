@@ -63,7 +63,13 @@ const Contact = () => {
   };
 
   return (
-    <div className={`${styles.padding} max-w-7xl mx-auto relative z-0`}>
+    <motion.div 
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      viewport={{ once: false, amount: 0.2 }}
+      className={`${styles.padding} max-w-7xl mx-auto relative z-0`}
+    >
       <span className='hash-span' id='contact'>
         &nbsp;
       </span>
@@ -71,7 +77,10 @@ const Contact = () => {
         className={`xl:mt-12 flex xl:flex-row flex-col-reverse gap-10 overflow-hidden`}
       >
         <motion.div
-          variants={slideIn("left", "tween", 0.2, 1)}
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          viewport={{ once: false }}
           className='flex-[0.75] bg-black-100 p-8 rounded-2xl'
         >
           <p className={styles.sectionSubText}>Get in touch</p>
@@ -126,7 +135,10 @@ const Contact = () => {
         </motion.div>
 
         <motion.div
-          variants={slideIn("right", "tween", 0.2, 1)}
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          viewport={{ once: false }}
           className='xl:flex-1 xl:h-auto md:h-[550px] h-[350px]'
         >
           <div className='w-full h-full flex items-center justify-center'>
@@ -162,7 +174,7 @@ const Contact = () => {
           </div>
         </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
