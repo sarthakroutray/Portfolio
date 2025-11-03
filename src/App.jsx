@@ -5,14 +5,14 @@ import Contact from './Contact';
 import Skills from './Skills';
 import Projects from './Projects';
 import Resume from './Resume';
-import StarsCanvas from './components/canvas/Stars';
+import ThreeGalaxy from './components/canvas/ThreeGalaxy.jsx';
 import Navbar from './components/Navbar';
 
 function App() {
   return (
     <div className="relative bg-primary">
-      <div className="fixed inset-0 z-0 w-full h-full">
-        <StarsCanvas />
+      <div className="fixed inset-0 z-0">
+        <ThreeGalaxy isDark={true} />
       </div>
       <div className="relative z-10 w-full">
         <Navbar />

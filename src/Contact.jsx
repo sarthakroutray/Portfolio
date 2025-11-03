@@ -139,10 +139,10 @@ const Contact = () => {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: false }}
-          className='xl:flex-1 xl:h-auto md:h-[550px] h-[350px]'
+          className='xl:flex-1 xl:h-auto md:h-[550px] h-[350px] flex items-center justify-center'
         >
           <div className='w-full h-full flex items-center justify-center'>
-            <div className='text-center'>
+            <div className='text-center backdrop-blur-md bg-black/30 p-6 rounded-2xl border border-white/10'>
               <p className='text-secondary text-[17px] max-w-3xl leading-[30px]'>
                 Feel free to reach out to me through the form, or connect with me on:
               </p>
@@ -178,4 +178,4 @@ const Contact = () => {
   );
 };
 
-export default Contact; 
+export default Contact;

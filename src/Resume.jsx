@@ -62,7 +62,7 @@ const Experience = () => {
       <span className='hash-span' id='resume'>
         &nbsp;
       </span>
-      <motion.div variants={textVariant()}>
+      <motion.div variants={textVariant()} className='backdrop-blur-md bg-black/5 p-6 rounded-2xl border border-white/10 inline-block mx-auto'>
         <p className={`${styles.sectionSubText} text-center`}>
           What I have done so far
         </p>

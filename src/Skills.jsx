@@ -18,7 +18,7 @@ const Tech = () => {
       <span className='hash-span' id='skills'>
         &nbsp;
       </span>
-      <motion.div variants={textVariant()}>
+      <motion.div variants={textVariant()} className='backdrop-blur-md bg-black/5 p-6 rounded-2xl border border-white/10 inline-block'>
         <p className={styles.sectionSubText}>What I know</p>
         <h2 className={styles.sectionHeadText}>Skills.</h2>
       </motion.div>
@@ -34,4 +34,4 @@ const Tech = () => {
   );
 };
 
-export default Tech; 
+export default Tech;
