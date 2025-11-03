@@ -14,6 +14,11 @@ const Contact = () => {
   });
 
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const validateEmail = (email) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  };
 
   const handleChange = (e) => {
     const { target } = e;
@@ -27,12 +32,20 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setError("");
+    if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
+      setError("All fields are required.");
+      return;
+    }
+    if (!validateEmail(form.email)) {
+      setError("Please enter a valid email address.");
+      return;
+    }
     setLoading(true);
-
     emailjs
       .send(
-        'service_d4y46is',
-        'template_vj69y85',
+        'service_s3mc40p',
+        'template_nvnrnvd',
         {
           from_name: form.name,
           to_name: "Sarthak Routray",
@@ -40,24 +53,17 @@ const Contact = () => {
           to_email: "sarthak.routray2006@gmail.com",
           message: form.message,
         },
-        'C-gZ2zL0322Q4J39j'
+        'oj1zEh3gWEb5p2bRO'
       )
       .then(
         () => {
           setLoading(false);
           alert("Thank you. I will get back to you as soon as possible.");
-
-          setForm({
-            name: "",
-            email: "",
-            message: "",
-          });
+          setForm({ name: "", email: "", message: "" });
         },
         (error) => {
           setLoading(false);
-          console.error(error);
-
-          alert("Ahh, something went wrong. Please try again.");
+          setError("Something went wrong. Please try again.");
         }
       );
   };
@@ -124,6 +130,12 @@ const Contact = () => {
                 className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
               />
             </label>
+
+            {error && (
+            <div className="mb-4 text-red-400 text-sm font-semibold text-center">
+              {error}
+            </div>
+          )}
 
             <button
               type='submit'
