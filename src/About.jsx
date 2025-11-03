@@ -1,20 +1,32 @@
-import { motion } from 'framer-motion';
+import React from "react";
+import { motion } from "framer-motion";
 
-function About() {
+import { styles } from "./styles";
+import { fadeIn, textVariant } from "./utils/motion";
+
+const About = () => {
   return (
-    <motion.div
-      initial={{ opacity: 0, x: -100 }}
-      animate={{ opacity: 1, x: 0 }}
-      exit={{ opacity: 0, x: 100 }}
-      transition={{ duration: 0.5 }}
-      className="py-4 md:py-8 flex flex-col items-center"
-    >
-      <div className="text-lg font-normal text-center md:text-left w-full max-w-2xl bg-clip-text text-transparent bg-gradient-purple-blue" style={{ filter: 'drop-shadow(0 0 3px rgba(0, 255, 255, 0.7))' }}>
-        <h2 className="text-5xl font-black bg-clip-text text-transparent bg-gradient-purple-blue leading-none mb-4" style={{ filter: 'drop-shadow(0 0 5px rgba(0, 255, 255, 0.7))' }}>About Me</h2>
-        <p className="mb-4">I am Sarthak Routray, a passionate Computer Science undergraduate at Manipal University Jaipur. With a strong enthusiasm for technology and coding, I continuously seek opportunities to expand my skills and apply them to real-world projects. I enjoy building creative and efficient software solutions, and I'm driven by a curiosity to learn new technologies and contribute meaningfully to the tech community.</p>
-      </div>
-    </motion.div>
+    <div className={`${styles.padding} max-w-7xl mx-auto relative z-0 flex flex-col items-center justify-center min-h-screen`}>
+      <span className='hash-span' id='about'>
+        &nbsp;
+      </span>
+      <motion.div variants={textVariant()} className='text-center'>
+        <p className={styles.sectionSubText}>Introduction</p>
+        <h2 className={styles.sectionHeadText}>Overview.</h2>
+      </motion.div>
+
+      <motion.p
+        variants={fadeIn("", "", 0.1, 1)}
+        className='mt-4 text-secondary text-[17px] max-w-3xl leading-[30px] text-center'
+      >
+        I'm a skilled software developer with experience in TypeScript and
+        JavaScript, and expertise in frameworks like React, Node.js, and
+        Three.js. I'm a quick learner and collaborate closely with clients to
+        create efficient, scalable, and user-friendly solutions that solve
+        real-world problems. Let's work together to bring your ideas to life!
+      </motion.p>
+    </div>
   );
-}
+};
 
 export default About; 
