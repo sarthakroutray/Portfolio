@@ -35,8 +35,8 @@ export default function ThreeGalaxy({ isDark = true }) {
       spin: 1,
       randomness: 0.5,
       randomnessPower: 3,
-      insideColor: '#915eff',
-      outsideColor: '#f272c8',
+      insideColor: '#9d4edd',
+      outsideColor: '#c77dff'
     };
 
     let geometry = null;

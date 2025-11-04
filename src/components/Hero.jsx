@@ -15,19 +15,22 @@ const Hero = () => {
       <div
         className={`max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start justify-center gap-5`}
       >
-        <div className='flex flex-col justify-center items-center mt-5'>
-          <div className='w-5 h-5 rounded-full bg-[#915EFF]' />
-          <div className='w-1 sm:h-80 h-40 violet-gradient' />
-        </div>
-
-        <div >
-          <h1 className={`${styles.heroHeadText} text-white`}>
-            Hi, I'm <span className='text-[#915EFF]'>Sarthak</span>
-          </h1>
-          <p className={`${styles.heroSubText} mt-2 text-white-100`}>
-            I develop full-stack web applications, <br className='sm:block hidden' /> 
-            AIML enthusiast and a lifelong learner.
-          </p>
+        <div>
+          <div style={{ background: 'rgba(5, 8, 22, 0.15)', backdropFilter: 'blur(12px)' }} className='p-6 rounded-2xl border border-white/30 shadow-xl shadow-black/50 flex gap-5 items-start'>
+            <div className='flex flex-col justify-center items-center mt-0'>
+              <div className='w-5 h-5 rounded-full bg-[#915EFF]' />
+              <div className='w-1 sm:h-52 h-52 violet-gradient' />
+            </div>
+            <div>
+              <h1 className={`${styles.heroHeadText} text-white drop-shadow-[0_4px_12px_rgba(0,0,0,1)]`}>
+                Hi, I'm <span className='text-[#915EFF] drop-shadow-[0_0_20px_rgba(145,94,255,0.8),0_4px_12px_rgba(0,0,0,1)]'>Sarthak</span>
+              </h1>
+              <p className={`${styles.heroSubText} mt-2 text-white drop-shadow-[0_4px_12px_rgba(0,0,0,1)]`}>
+                I develop full-stack web applications,
+                AIML enthusiast  <br className='sm:block hidden' /> and a lifelong learner.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
 
