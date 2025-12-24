@@ -7,6 +7,7 @@ import Projects from './Projects';
 import Resume from './Resume';
 import ThreeGalaxy from './components/canvas/ThreeGalaxy.jsx';
 import Navbar from './components/Navbar';
+import { Analytics } from '@vercel/analytics/react';
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
           <Contact />
         </div>
       </div>
+      <Analytics />
     </div>
   );
 }
