@@ -11,7 +11,6 @@ import AboutSection from "./components/AboutSection";
 import ResumeSection from "./components/ResumeSection";
 import SkillsSection from "./components/SkillsSection";
 import EngineeringFocusSection from "./components/EngineeringFocusSection";
-  const [selectedFocus, setSelectedFocus] = useState("");
 import ContactSection from "./components/ContactSection";
 import SideRail from "./components/SideRail";
 import StickyNote from "./components/StickyNote";
@@ -31,6 +30,7 @@ function App() {
   const [selectedTag, setSelectedTag] = useState("all");
   const [expandedProjects, setExpandedProjects] = useState({});
   const [noteIndex, setNoteIndex] = useState(0);
+  const [selectedFocus, setSelectedFocus] = useState("");
 
   const stickyNotes = [
     { text: "Ask me about AI + full-stack collabs.", footer: "build > hype" },
