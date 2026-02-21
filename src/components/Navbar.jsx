@@ -1,98 +1,81 @@
-import React, { useEffect, useState } from "react";
-
-import { navLinks } from "../constants";
-import GlassSurface from "./GlassSurface";
-import HamburgerMenuOverlay from "./HamburgerMenuOverlay";
-const Navbar = () => {
-  const [active, setActive] = useState("");
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      if (scrollTop > 100) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-
-      // Update active nav based on scroll position
-      for (const nav of navLinks) {
-        const section = document.getElementById(nav.id);
-        if (section) {
-          const { offsetTop, offsetHeight } = section;
-          // Adjust offset for the floating navbar
-          if (scrollTop >= offsetTop - 200 && scrollTop < offsetTop + offsetHeight - 200) {
-            setActive(nav.title);
-            break;
-          }
-        }
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const handleSmoothScroll = (id) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
-      setActive(
-        navLinks.find((nav) => nav.id === id)?.title || ""
-      );
-    }
-  };
-
+function Navbar({ activeSection, scrollToId, mobileMenuOpen, setMobileMenuOpen }) {
   return (
-    <nav
-      className={`fixed top-10 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-300 ${
-        scrolled ? "w-[82%] md:w-[70%] lg:w-[58%]" : "w-[88%] md:w-[74%] lg:w-[62%]"
-        }`}
-    >
-      <GlassSurface
-        borderRadius={32}
-        opacity={scrolled ? 1.9 : 0.85}
-        blur={10}
-        saturation={1.4}
-        backgroundOpacity={0.4}
-        mixBlendMode="normal"
-        displace={0.6}
-        distortionScale={-60}
-        redOffset={2}
-        greenOffset={2}
-        blueOffset={4}
-        className={`w-full flex justify-between items-center px-6 py-3 border border-white/10 shadow-xl transition-all duration-300`}
-      >
-        <button
-          className='flex items-center gap-2'
-          onClick={() => {
-            handleSmoothScroll("home");
-            setActive("");
-          }}
-        >
-          <img src="/vite.svg" alt='logo' className='w-8 h-8 object-contain' />
-          <p className='text-white text-[16px] font-bold cursor-pointer flex '>
-            Sarthak
-          </p>
-        </button>
+    <>
+      <nav className="sticky top-0 z-40 border-b-4 border-ink-black bg-paper-gray bg-paper-texture">
+        <div className="flex justify-between items-stretch h-16 sm:h-20">
+          <button
+            onClick={() => scrollToId("home")}
+            className="flex items-center px-6 sm:px-10 border-r-4 border-ink-black bg-ink-black relative overflow-hidden group"
+          >
+            <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity" />
+            <span className="text-paper-gray font-ransom text-3xl sm:text-4xl tracking-widest transform -rotate-2">
+              SARTHAK ROUTRAY
+            </span>
+          </button>
 
-        <div className='flex flex-1 justify-end items-center'>
-          <HamburgerMenuOverlay
-            buttonPosition="inline"
-            buttonSize="sm"
-            textColor="#ffffff"
-            fontSize="xl"
-            items={navLinks.map((nav) => ({
-              label: nav.title,
-              onClick: () => handleSmoothScroll(nav.id),
-            }))}
-            buttonClassName="bg-transparent hover:bg-white/10"
-          />
+          <div className="hidden md:flex flex-1 items-stretch justify-end">
+            <button
+              onClick={() => scrollToId("projects")}
+              className={`flex items-center px-8 text-xl font-bold border-l-4 border-ink-black transition-colors font-mono relative group ${
+                activeSection === "projects"
+                  ? "bg-sharpie-blue text-white"
+                  : "hover:bg-sharpie-blue hover:text-white"
+              }`}
+            >
+              <span className="z-10 relative">WORK</span>
+            </button>
+            <button
+              onClick={() => scrollToId("about")}
+              className={`flex items-center px-8 text-xl font-bold border-l-4 border-ink-black transition-colors font-mono relative group ${
+                activeSection === "about"
+                  ? "bg-sharpie-blue text-white"
+                  : "hover:bg-sharpie-blue hover:text-white"
+              }`}
+            >
+              <span className="z-10 relative">ABOUT</span>
+            </button>
+            <button
+              onClick={() => scrollToId("contact")}
+              className={`flex items-center px-8 text-xl font-bold border-l-4 border-ink-black transition-colors font-mono ${
+                activeSection === "contact"
+                  ? "bg-ink-black text-white"
+                  : "hover:bg-ink-black hover:text-white"
+              }`}
+            >
+              CONTACT
+            </button>
+          </div>
+
+          <button
+            onClick={() => setMobileMenuOpen(true)}
+            className="md:hidden flex items-center px-6 border-l-4 border-ink-black hover:bg-ink-black hover:text-white cursor-pointer bg-sharpie-blue text-white"
+            aria-label="Open menu"
+          >
+            <span className="material-symbols-outlined text-3xl">menu</span>
+          </button>
         </div>
-      </GlassSurface>
-    </nav>
+      </nav>
+
+      {mobileMenuOpen && (
+        <div className="fixed inset-0 z-50 bg-ink-black/90 backdrop-blur-sm md:hidden flex flex-col items-center justify-center gap-6">
+          <button
+            className="absolute top-6 right-6 text-white"
+            onClick={() => setMobileMenuOpen(false)}
+            aria-label="Close menu"
+          >
+            <span className="material-symbols-outlined text-4xl">close</span>
+          </button>
+
+          <button onClick={() => scrollToId("home")} className="text-3xl font-ransom text-paper-gray">HOME</button>
+          <button onClick={() => scrollToId("projects")} className="text-3xl font-ransom text-paper-gray">WORK</button>
+          <button onClick={() => scrollToId("about")} className="text-3xl font-ransom text-paper-gray">ABOUT</button>
+          <button onClick={() => scrollToId("resume")} className="text-3xl font-ransom text-paper-gray">EXPERIENCE</button>
+          <button onClick={() => scrollToId("skills")} className="text-3xl font-ransom text-paper-gray">SKILLS</button>
+          <button onClick={() => scrollToId("contact")} className="text-3xl font-ransom text-paper-gray">CONTACT</button>
+        </div>
+      )}
+    </>
   );
-};
+}
 
 export default Navbar;
