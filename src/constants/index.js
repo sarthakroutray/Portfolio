@@ -120,10 +120,10 @@ export const navLinks = [
       iconBg: "#383E56",
       date: "June 2025 - July 2025",
       points: [
-        "Developed and implemented machine learning models to improve data analysis processes.",
-        "Collaborated with cross-functional teams to gather requirements and deliver AI solutions.",
-        "Conducted research on the latest AI technologies and trends to enhance project outcomes.",
-        "Assisted in the deployment and monitoring of AI models in production environments.",
+        "Built and evaluated machine learning models in Python for internal classification and forecasting use cases using scikit-learn pipelines.",
+        "Designed reusable preprocessing workflows that reduced manual data-cleaning effort and improved experimentation turnaround by roughly 15%.",
+        "Exposed model inference through REST endpoints and integrated them into application workflows for faster stakeholder validation.",
+        "Set up model monitoring checks for drift and prediction consistency so production outputs stayed stable over time.",
       ],
     },
     {
@@ -133,10 +133,10 @@ export const navLinks = [
       iconBg: "#E6DEDD",
       date: "June 2025 - Present",
       points: [
-        "Developing and maintaining web applications using React.js and other related technologies.",
-        "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-        "Implementing responsive design and ensuring cross-browser compatibility.",
-        "Participating in code reviews and providing constructive feedback to other developers.",
+        "Led architecture and delivery of chapter web platforms using React and TypeScript with focus on maintainability and release speed.",
+        "Standardized component and API integration patterns that reduced repeated implementation effort across event pages and modules.",
+        "Reduced page lag on mobile by simplifying heavy UI paths and tightening render behavior on key event pages.",
+        "Introduced PR review checklists and shared coding patterns so contributors shipped more consistent React and TypeScript code.",
       ],
     },
   ];
@@ -172,69 +172,138 @@ export const navLinks = [
     {
       name: "Redconnect",
       description:
-        "Web-based platform that allows users to search, book, and manage blood donations from various providers, providing a convenient and efficient solution for healthcare needs.",
+        "Built a blood-donation coordination platform to reduce friction between donors, patients, and organizers through streamlined search, booking, and request management flows.",
+      techHighlights: "Tech: React, Node.js, PostgreSQL, Tailwind, REST APIs",
+      ctaLabel: "Inspect System",
       tags: [
         {
-          name: "react",
+          name: "frontend",
           color: "blue-text-gradient",
         },
         {
-          name: "PostgreSQL",
+          name: "backend",
           color: "green-text-gradient",
         },
         {
-          name: "tailwind",
+          name: "database",
           color: "pink-text-gradient",
         },
       ],
-      image: "/Redconnect.png",
       source_code_link: "https://github.com/sarthakroutray/RedConnect.git",
     },
     {
       name: "GeoVerse",
       description:
-        "An advanced AI-powered question-answering system for geospatial and earth observation data, specifically designed to interact with the MOSDAC (Meteorological & Oceanographic Satellite Data Archival Centre) portal.",
+        "Engineered an AI-assisted geospatial Q&A system for MOSDAC data that converts complex earth-observation queries into actionable responses for faster research workflows.",
+      techHighlights: "Tech: React, Python, LLM workflows, APIs, Geospatial data",
+      ctaLabel: "Explore Case Study",
       tags: [
         {
-          name: "react",
+          name: "ai",
           color: "blue-text-gradient",
         },
         {
-          name: "restapi",
+          name: "llm",
           color: "green-text-gradient",
         },
         {
-          name: "scss",
+          name: "frontend",
           color: "pink-text-gradient",
         },
         {
-          name: "python",
+          name: "backend",
           color: "yellow-text-gradient",
         },
-        {
-          name: "LLMs",
-          color: "purple-text-gradient",
-        },
       ],
-      image: "/Geoverse.png",
       source_code_link: "https://github.com/sarthakroutray/GeoVerse.git",
     },
     {
       name: "RL",
       description:
-        "This repository implements a reinforcement-learning solution for fund investment management using the Soft Actor-Critic algorithm. The primary artifact is `Main_RL.ipynb` which defines a custom Gymnasium environment, training and evaluation routines, and a runnable pipeline..",
+        "Developed a reinforcement-learning investment environment using Soft Actor-Critic to evaluate policy-based allocation strategies under changing market conditions.",
+      techHighlights: "Tech: Python, Gymnasium, PyTorch, Reinforcement Learning",
+      ctaLabel: "View Architecture",
       tags: [
         {
-          name: "Python",
+          name: "ai",
           color: "blue-text-gradient",
         },
         {
-          name: "MachineLearning",
+          name: "ml",
+          color: "green-text-gradient",
+        },
+        {
+          name: "research",
           color: "green-text-gradient",
         },
       ],
-      image: "/RL..png",
       source_code_link: "https://github.com/sarthakroutray/RL.git",
+    },
+    {
+      name: "IntelliMed AI",
+      description:
+        "Implemented an AI-driven medical support platform that structures symptom and context inputs into repeatable assistant flows so outputs stay consistent across similar queries.",
+      techHighlights: "Tech: JavaScript, AI workflows, Node.js, Prompt orchestration",
+      ctaLabel: "Inspect System",
+      tags: [
+        {
+          name: "ai",
+          color: "blue-text-gradient",
+        },
+        {
+          name: "backend",
+          color: "green-text-gradient",
+        },
+        {
+          name: "healthtech",
+          color: "pink-text-gradient",
+        },
+      ],
+      source_code_link: "https://github.com/sarthakroutray/IntelliMed-AI",
+    },
+    {
+      name: "ELICIT-25",
+      description:
+        "Contributed to ELICIT-25 by stabilizing frontend modules before event releases and helping deploy updates with low downtime risk during active campaign windows.",
+      techHighlights: "Tech: TypeScript, React, Tailwind, Vercel, Component architecture",
+      ctaLabel: "Inspect System",
+      tags: [
+        {
+          name: "frontend",
+          color: "blue-text-gradient",
+        },
+        {
+          name: "production",
+          color: "green-text-gradient",
+        },
+        {
+          name: "event-platform",
+          color: "pink-text-gradient",
+        },
+      ],
+      source_code_link: "https://github.com/sarthakroutray/ELICIT-25",
+    },
+    {
+      name: "Final Destination Treasure Hunt",
+      description:
+        "Built core clue progression logic and event-state checks so treasure-hunt rounds ran smoothly during live, time-bound participation.",
+      techHighlights: "Tech: JavaScript, React, State logic, Event flow design",
+      ctaLabel: "Inspect System",
+      tags: [
+        {
+          name: "frontend",
+          color: "blue-text-gradient",
+        },
+        {
+          name: "logic-design",
+          color: "green-text-gradient",
+        },
+        {
+          name: "event-tech",
+          color: "pink-text-gradient",
+        },
+      ],
+      source_code_link: "https://github.com/sarthakroutray/Treasure-Hunt",
     },
   ];
   

@@ -46,7 +46,8 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-10 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-300 ${scrolled ? "w-[82%] md:w-[70%] lg:w-[58%]" : "w-[88%] md:w-[74%] lg:w-[62%]"
+      className={`fixed top-10 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-300 ${
+        scrolled ? "w-[82%] md:w-[70%] lg:w-[58%]" : "w-[88%] md:w-[74%] lg:w-[62%]"
         }`}
     >
       <GlassSurface

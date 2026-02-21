@@ -43,9 +43,9 @@ const About = () => {
           viewport={{ once: false }}
           className='mt-4 text-white text-[17px] max-w-3xl leading-[30px]'
         >
-          I'm a skilled software developer with strong expertise in TypeScript and JavaScript, specializing in modern frameworks like React, Node.js, and Three.js. I also work with AI and Machine Learning technologies, combining intelligent systems with interactive interfaces to create innovative, data-driven solutions.
+          I build web products with React, Node.js, and TypeScript, and I spend most of my time on features where backend behavior and AI outputs need to work together reliably.
 <br />
-A fast learner and creative problem-solver, I collaborate closely with clients to build efficient, scalable, and user-centric applications that make a real impact. Let’s bring your ideas to life with technology that’s both smart and intuitive.
+I prefer practical engineering over buzzwords: clear API contracts, stable deployments, and model-driven workflows that teams can actually maintain.
         </motion.p>
       </div>
     </motion.div>

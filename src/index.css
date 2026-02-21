@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Anton&family=Courier+Prime:wght@400;700&family=Rubik+Glitch&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -8,17 +8,134 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  font-family: "Courier Prime", monospace;
   scroll-behavior: smooth;
-  color-scheme: dark;
 }
 
 body, html {
   overflow-x: hidden;
+  background-color: #a8a8a8;
 }
 
 #root {
   overflow-x: hidden;
+}
+
+.noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 20;
+  opacity: 0.12;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 20s linear infinite;
+}
+
+::-webkit-scrollbar {
+  width: 14px;
+}
+
+::-webkit-scrollbar-track {
+  background: #a8a8a8;
+  border-left: 2px solid #000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1a1a1a;
+  border: 2px solid #a8a8a8;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0022cc;
+}
+
+.vertical-text {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+.clip-torn {
+  clip-path: polygon(
+    0% 10px,
+    5% 0px,
+    10% 12px,
+    15% 2px,
+    20% 10px,
+    25% 0px,
+    30% 12px,
+    35% 2px,
+    40% 10px,
+    45% 0px,
+    50% 12px,
+    55% 2px,
+    60% 10px,
+    65% 0px,
+    70% 12px,
+    75% 2px,
+    80% 10px,
+    85% 0px,
+    90% 12px,
+    95% 2px,
+    100% 10px,
+    100% 100%,
+    0% 100%
+  );
+}
+
+.tape {
+  background-color: rgba(230, 230, 230, 0.3);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(1px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.staple {
+  width: 40px;
+  height: 10px;
+  border-top: 2px solid #555;
+  border-left: 1px solid #555;
+  border-right: 1px solid #555;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(to right, transparent 5%, rgba(200, 200, 200, 0.8) 50%, transparent 95%);
+}
+
+.halftone-img {
+  filter: grayscale(100%) contrast(150%);
+  position: relative;
+}
+
+.halftone-img::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(circle, #000 1px, transparent 1.5px);
+  background-size: 4px 4px;
+  opacity: 0.4;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+
+.scribble-box {
+  border: 3px solid #0022cc;
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
 }
 
 .hash-span {
@@ -26,103 +143,6 @@ body, html {
   padding-bottom: 100px;
   display: block;
 }
-
-.black-gradient {
-  background: #000000; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to right,
-    #434343,
-    #000000
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to right,
-    #434343,
-    #000000
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-}
-
-.violet-gradient {
-  background: #804dee;
-  background: linear-gradient(-90deg, #804dee 0%, rgba(60, 51, 80, 0) 100%);
-  background: -webkit-linear-gradient(
-    -90deg,
-    #804dee 0%,
-    rgba(60, 51, 80, 0) 100%
-  );
-}
-
-.green-pink-gradient {
-  background: "#00cea8";
-  background: linear-gradient(90.13deg, #00cea8 1.9%, #bf61ff 97.5%);
-  background: -webkit-linear-gradient(-90.13deg, #00cea8 1.9%, #bf61ff 97.5%);
-}
-
-.orange-text-gradient {
-  background: #f12711; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to top,
-    #f12711,
-    #f5af19
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to top,
-    #f12711,
-    #f5af19
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.green-text-gradient {
-  background: #11998e; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to top,
-    #11998e,
-    #38ef7d
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to top,
-    #11998e,
-    #38ef7d
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.blue-text-gradient {
-  /* background: -webkit-linear-gradient(#eee, #333); */
-  background: #56ccf2; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to top,
-    #2f80ed,
-    #56ccf2
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to top,
-    #2f80ed,
-    #56ccf2
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.pink-text-gradient {
-  background: #ec008c; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to top,
-    #ec008c,
-    #fc6767
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to top,
-    #ec008c,
-    #fc6767
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* canvas- styles */
 .canvas-loader {
   font-size: 10px;
   width: 1em;
