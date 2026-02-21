@@ -5,10 +5,10 @@ function Navbar({ activeSection, scrollToId, mobileMenuOpen, setMobileMenuOpen }
         <div className="flex justify-between items-stretch h-16 sm:h-20">
           <button
             onClick={() => scrollToId("home")}
-            className="flex items-center px-6 sm:px-10 border-r-4 border-ink-black bg-ink-black relative overflow-hidden group"
+            className="flex items-center px-4 sm:px-10 border-r-4 border-ink-black bg-ink-black relative overflow-hidden group"
           >
             <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity" />
-            <span className="text-paper-gray font-ransom text-3xl sm:text-4xl tracking-widest transform -rotate-2">
+            <span className="text-paper-gray font-ransom text-2xl sm:text-4xl tracking-widest transform -rotate-2">
               SARTHAK ROUTRAY
             </span>
           </button>
@@ -16,31 +16,28 @@ function Navbar({ activeSection, scrollToId, mobileMenuOpen, setMobileMenuOpen }
           <div className="hidden md:flex flex-1 items-stretch justify-end">
             <button
               onClick={() => scrollToId("projects")}
-              className={`flex items-center px-8 text-xl font-bold border-l-4 border-ink-black transition-colors font-mono relative group ${
-                activeSection === "projects"
+              className={`flex items-center px-8 text-xl font-bold border-l-4 border-ink-black transition-colors font-mono relative group ${activeSection === "projects"
                   ? "bg-sharpie-blue text-white"
                   : "hover:bg-sharpie-blue hover:text-white"
-              }`}
+                }`}
             >
               <span className="z-10 relative">WORK</span>
             </button>
             <button
               onClick={() => scrollToId("about")}
-              className={`flex items-center px-8 text-xl font-bold border-l-4 border-ink-black transition-colors font-mono relative group ${
-                activeSection === "about"
+              className={`flex items-center px-8 text-xl font-bold border-l-4 border-ink-black transition-colors font-mono relative group ${activeSection === "about"
                   ? "bg-sharpie-blue text-white"
                   : "hover:bg-sharpie-blue hover:text-white"
-              }`}
+                }`}
             >
               <span className="z-10 relative">ABOUT</span>
             </button>
             <button
               onClick={() => scrollToId("contact")}
-              className={`flex items-center px-8 text-xl font-bold border-l-4 border-ink-black transition-colors font-mono ${
-                activeSection === "contact"
+              className={`flex items-center px-8 text-xl font-bold border-l-4 border-ink-black transition-colors font-mono ${activeSection === "contact"
                   ? "bg-ink-black text-white"
                   : "hover:bg-ink-black hover:text-white"
-              }`}
+                }`}
             >
               CONTACT
             </button>

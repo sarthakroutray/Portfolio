@@ -8,7 +8,7 @@ function SideRail({ activeSection, scrollToId }) {
       <div className="flex-grow flex items-center justify-center py-4">
         <button
           onClick={() => scrollToId(activeSection === "home" ? "contact" : "home")}
-          className="vertical-text font-ransom uppercase text-4xl sm:text-5xl tracking-widest whitespace-nowrap hover:text-sharpie-blue transition-colors cursor-pointer select-none"
+          className="lg:vertical-text font-ransom uppercase text-2xl sm:text-4xl lg:text-5xl tracking-widest whitespace-nowrap hover:text-sharpie-blue transition-colors cursor-pointer select-none"
         >
           {activeSection === "home" ? "LETS_MAKE_NOISE" : `IN_${activeSection.replace(/-/g, "_").toUpperCase()}`}
         </button>

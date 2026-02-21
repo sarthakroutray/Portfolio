@@ -64,9 +64,11 @@ body, html {
   background: #0022cc;
 }
 
-.vertical-text {
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
+@layer utilities {
+  .vertical-text {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+  }
 }
 
 .clip-torn {

@@ -9,8 +9,8 @@ function ProjectsSection({
 }) {
   return (
     <section id="projects" className="container mx-auto px-6 py-24 bg-dark-paper relative">
-      <div className="flex flex-col md:flex-row items-end justify-between mb-8 pb-4 border-b-4 border-dashed border-ink-black gap-4">
-        <h2 className="text-7xl sm:text-9xl font-ransom text-ink-black tracking-tighter leading-none mix-blend-overlay opacity-80">
+      <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-8 pb-4 border-b-4 border-dashed border-ink-black gap-4">
+        <h2 className="text-6xl sm:text-7xl md:text-9xl font-ransom text-ink-black tracking-tighter leading-none mix-blend-overlay opacity-80">
           THE
           <br />
           WORK
@@ -26,18 +26,17 @@ function ProjectsSection({
           <button
             key={tag}
             onClick={() => setSelectedTag(tag)}
-            className={`px-3 py-1 border-2 border-ink-black font-mono text-xs uppercase transition-colors ${
-              selectedTag === tag
+            className={`px-3 py-1 border-2 border-ink-black font-mono text-xs uppercase transition-colors ${selectedTag === tag
                 ? "bg-ink-black text-white"
                 : "bg-paper-gray hover:bg-sharpie-blue hover:text-white"
-            }`}
+              }`}
           >
             {tag}
           </button>
         ))}
         <button
           onClick={() => setSelectedTag("all")}
-          className="px-4 py-2 border-2 border-ink-black bg-white font-mono text-xs uppercase hover:bg-ink-black hover:text-white ml-2"
+          className="px-4 py-2 border-2 border-ink-black bg-white font-mono text-xs uppercase hover:bg-ink-black hover:text-white mt-2 sm:mt-0"
         >
           Reset Project Filter
         </button>

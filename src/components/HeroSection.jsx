@@ -3,7 +3,7 @@ function HeroSection({ heroToolkit, scrollToId }) {
     <section id="home" className="container mx-auto px-4 py-12 sm:py-24 relative z-10">
       <div className="absolute top-20 right-1/4 w-40 h-10 tape z-0 transform rotate-3" />
       <div className="max-w-6xl mx-auto relative">
-        <div className="relative bg-paper-gray border-4 border-ink-black p-6 sm:p-12 shadow-cutout transform -rotate-1 mb-20 clip-torn">
+        <div className="relative bg-paper-gray border-4 border-ink-black p-4 sm:p-12 shadow-cutout transform -rotate-1 mb-20 clip-torn">
           <div className="absolute top-2 left-2 staple transform -rotate-45" />
           <div className="absolute top-2 right-2 staple transform rotate-45" />
 
@@ -11,7 +11,7 @@ function HeroSection({ heroToolkit, scrollToId }) {
             ISSUE #001
           </div>
 
-          <h1 className="text-5xl sm:text-7xl md:text-8xl font-display uppercase leading-[0.85] tracking-tight mb-8 text-ink-black mix-blend-multiply relative z-10">
+          <h1 className="text-5xl sm:text-7xl md:text-8xl font-display uppercase leading-[0.85] sm:leading-[0.85] tracking-tight mb-12 sm:mb-8 text-ink-black mix-blend-multiply relative z-10">
             FULL-STACK
             <br />
             <span className="relative inline-block">
@@ -21,7 +21,7 @@ function HeroSection({ heroToolkit, scrollToId }) {
               >
                 ENGINEER
               </span>
-              <span className="absolute -bottom-2 -right-4 text-2xl sm:text-3xl text-sharpie-blue font-marker transform -rotate-12 z-20">
+              <span className="absolute -bottom-6 right-0 sm:-bottom-2 sm:-right-4 text-xl sm:text-3xl text-sharpie-blue font-marker transform -rotate-12 z-20">
                 (AI Systems)
               </span>
             </span>
