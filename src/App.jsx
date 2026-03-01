@@ -14,6 +14,7 @@ import EngineeringFocusSection from "./components/EngineeringFocusSection";
 import ContactSection from "./components/ContactSection";
 import SideRail from "./components/SideRail";
 import StickyNote from "./components/StickyNote";
+import TargetCursor from "./components/TargetCursor";
 
 const sectionIds = ["home", "projects", "about", "resume", "skills", "engineering-focus", "contact"];
 
@@ -189,6 +190,14 @@ function App() {
 
   return (
     <div className="bg-dark-paper bg-paper-texture font-body text-ink-black min-h-screen flex flex-col overflow-x-hidden selection:bg-sharpie-blue selection:text-white">
+      <TargetCursor
+        targetSelector="a, button, input, textarea, select, [role='button'], .cursor-target"
+        spinDuration={2}
+        hideDefaultCursor
+        parallaxOn
+        hoverDuration={0.2}
+      />
+
       <div className="noise-overlay" />
 
       <Navbar
