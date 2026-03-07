@@ -1,10 +1,14 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import type { ReactNode } from "react";
-import PixelBlastBackground from "./PixelBlastBackground";
+
+const PixelBlastBackground = dynamic(() => import("./PixelBlastBackground"), {
+  ssr: false,
+});
 
 gsap.registerPlugin(ScrollTrigger);
 

@@ -16,6 +16,7 @@ export default function SkillsPageClient() {
     <GsapProvider>
       <Navbar activeSection="skills" scrollToId={scrollToId} />
       <main className="flex-grow relative z-10 pt-24">
+        <h1 className="sr-only">Technical Skills - Sarthak Routray</h1>
         <SkillsSection selectedTag={selectedTag} setSelectedTag={setSelectedTag} />
       </main>
     </GsapProvider>

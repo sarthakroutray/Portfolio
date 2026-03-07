@@ -5,10 +5,14 @@ export const metadata: Metadata = {
   title: "Projects",
   description:
     "Explore projects by Sarthak Routray — blood-donation platforms, AI geospatial systems, reinforcement-learning environments, and more.",
+  alternates: {
+    canonical: "/projects",
+  },
   openGraph: {
-    title: "Projects | Sarthak Routray",
+    title: "Sarthak Routray | Projects",
     description:
       "Explore projects by Sarthak Routray — blood-donation platforms, AI geospatial systems, reinforcement-learning environments, and more.",
+    url: "https://sarthakroutray.vercel.app/projects",
   },
 };
 

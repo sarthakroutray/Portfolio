@@ -17,7 +17,7 @@ export default function HeroSection({ scrollToId }: HeroSectionProps) {
             ISSUE #001
           </div>
 
-          <h1 className="text-5xl sm:text-7xl md:text-8xl font-display uppercase leading-[0.85] sm:leading-[0.85] tracking-tight mb-12 sm:mb-8 text-ink-black mix-blend-multiply relative z-10">
+          <h2 className="text-5xl sm:text-7xl md:text-8xl font-display uppercase leading-[0.85] sm:leading-[0.85] tracking-tight mb-12 sm:mb-8 text-ink-black mix-blend-multiply relative z-10">
             FULL-STACK
             <br />
             <span className="relative inline-block">
@@ -29,7 +29,7 @@ export default function HeroSection({ scrollToId }: HeroSectionProps) {
               </span>
             </span>
             <br />BUILDER
-          </h1>
+          </h2>
 
           <div className="flex flex-col md:flex-row gap-8 items-start relative">
             <div className="fluid-glass reveal-glass w-full md:w-2/3 bg-white p-6 border-2 border-ink-black shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)] transform rotate-1">

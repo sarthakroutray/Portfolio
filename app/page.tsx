@@ -77,8 +77,14 @@ export default function HomePage() {
 
       <div className="flex flex-col lg:flex-row flex-grow relative z-10">
         <main className="flex-grow w-full lg:w-[calc(100%-80px)]">
+          <h1 className="sr-only">Sarthak Routray - Full Stack Developer</h1>
           <TopMarquee />
           <HeroSection scrollToId={scrollToId} />
+          <p className="sr-only">
+            Sarthak Routray is a full stack developer specializing in Next.js, React,
+            AI systems, and scalable backend architectures. This portfolio showcases
+            projects, technical skills, and education.
+          </p>
           <SystemMarquee />
           <ProjectsSection selectedTag={selectedTag} setSelectedTag={setSelectedTag} />
           <AboutSection />
@@ -86,6 +92,10 @@ export default function HomePage() {
           <SkillsSection selectedTag={selectedTag} setSelectedTag={setSelectedTag} />
           <EngineeringFocusSection />
           <ContactSection />
+          <p className="sr-only">
+            The Sarthak Routray portfolio highlights production-focused engineering work,
+            modern web application development, and AI-backed systems built by Sarthak Routray.
+          </p>
         </main>
         <SideRail activeSection={activeSection} scrollToId={scrollToId} />
       </div>

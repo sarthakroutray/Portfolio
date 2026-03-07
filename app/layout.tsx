@@ -32,41 +32,73 @@ const inter = Inter({
   display: "swap",
 });
 
+const siteUrl = "https://sarthakroutray.vercel.app";
+
+const structuredData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Sarthak Routray",
+    url: siteUrl,
+    jobTitle: "Full Stack Developer",
+    description:
+      "Full Stack Developer specializing in Next.js, React, AI systems and modern web applications.",
+    image: `${siteUrl}/og-image.png`,
+    sameAs: [
+      "https://github.com/sarthakroutray",
+      "https://www.linkedin.com/in/sarthak-routray-020583323/",
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Sarthak Routray Portfolio",
+    url: siteUrl,
+  },
+];
+
 /* ===== Global metadata ===== */
 export const metadata: Metadata = {
-  metadataBase: new URL("https://sarthakroutray.vercel.app"),
+  metadataBase: new URL(siteUrl),
   title: {
-    default: "Sarthak Routray — Full-Stack Engineer",
-    template: "%s | Sarthak Routray",
+    default: "Sarthak Routray | Full Stack Developer",
+    template: "Sarthak Routray | %s",
   },
   description:
-    "Full-stack engineer building AI-powered systems. Specialising in React, Node.js, Python, and applied ML architecture.",
+    "Portfolio of Sarthak Routray - Full Stack Developer specializing in Next.js, React, AI systems, and scalable backend applications.",
   keywords: [
     "Sarthak Routray",
-    "Full-Stack Developer",
-    "AI Engineer",
-    "React",
-    "Node.js",
-    "Python",
-    "Machine Learning",
-    "Portfolio",
+    "Full Stack Developer",
+    "Next.js Developer",
+    "React Developer",
+    "AI Developer",
+    "Web Developer Portfolio",
   ],
   authors: [{ name: "Sarthak Routray" }],
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: "https://sarthakroutray.vercel.app",
-    siteName: "Sarthak Routray Portfolio",
-    title: "Sarthak Routray — Full-Stack Engineer",
+    title: "Sarthak Routray | Full Stack Developer",
     description:
-      "Full-stack engineer building AI-powered systems with a production-first mindset.",
-    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Sarthak Routray Portfolio" }],
+      "Portfolio of Sarthak Routray - Full Stack Developer specializing in Next.js, React, AI systems, and scalable backend applications.",
+    url: siteUrl,
+    siteName: "Sarthak Routray Portfolio",
+    type: "website",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Sarthak Routray | Full Stack Developer",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Sarthak Routray — Full-Stack Engineer",
+    title: "Sarthak Routray | Full Stack Developer",
     description:
-      "Full-stack engineer building AI-powered systems with a production-first mindset.",
+      "Portfolio of Sarthak Routray - Full Stack Developer specializing in Next.js, React, AI systems, and scalable backend applications.",
     images: ["/og-image.png"],
   },
   robots: { index: true, follow: true },
@@ -89,6 +121,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link
           href="https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap"
           rel="stylesheet"
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
       </head>
       <body className="font-body">

@@ -5,10 +5,14 @@ export const metadata: Metadata = {
   title: "Education",
   description:
     "Education and experience of Sarthak Routray — SRM University, internships, and professional experience timeline.",
+  alternates: {
+    canonical: "/education",
+  },
   openGraph: {
-    title: "Education | Sarthak Routray",
+    title: "Sarthak Routray | Education",
     description:
       "Education and experience of Sarthak Routray — SRM University, internships, and professional experience timeline.",
+    url: "https://sarthakroutray.vercel.app/education",
   },
 };
 

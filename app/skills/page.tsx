@@ -5,10 +5,14 @@ export const metadata: Metadata = {
   title: "Skills",
   description:
     "Technical skills of Sarthak Routray — React, Node.js, TypeScript, Python, Machine Learning, Docker, and more.",
+  alternates: {
+    canonical: "/skills",
+  },
   openGraph: {
-    title: "Skills | Sarthak Routray",
+    title: "Sarthak Routray | Skills",
     description:
       "Technical skills of Sarthak Routray — React, Node.js, TypeScript, Python, Machine Learning, Docker, and more.",
+    url: "https://sarthakroutray.vercel.app/skills",
   },
 };
 

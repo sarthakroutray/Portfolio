@@ -16,6 +16,7 @@ export default function ProjectsPageClient() {
     <GsapProvider>
       <Navbar activeSection="projects" scrollToId={scrollToId} />
       <main className="flex-grow relative z-10">
+        <h1 className="sr-only">Projects by Sarthak Routray</h1>
         <ProjectsSection selectedTag={selectedTag} setSelectedTag={setSelectedTag} />
       </main>
     </GsapProvider>

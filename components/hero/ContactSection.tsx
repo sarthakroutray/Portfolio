@@ -60,7 +60,7 @@ export default function ContactSection() {
       <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
         <div className="fluid-glass reveal-glass floating-glass bg-paper-gray border-4 border-ink-black p-4 sm:p-8 shadow-cutout">
           <p className="font-mono text-sm uppercase tracking-[0.25em] mb-2">Get in touch</p>
-          <h3 className="font-display text-5xl uppercase mb-8">Contact</h3>
+          <h2 className="font-display text-5xl uppercase mb-8">Contact</h2>
           <p className="font-mono text-sm border-l-4 border-sharpie-blue pl-3 mb-6">
             Open to AI/ML internships and backend engineering roles.
           </p>
