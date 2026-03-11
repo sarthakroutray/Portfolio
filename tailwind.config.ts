@@ -37,12 +37,13 @@ const config: Config = {
         "cyber-surface": "#190535",
       },
       fontFamily: {
-        ransom: ["Rubik Glitch", "cursive"],
-        display: ["var(--font-anton)", "Anton", "sans-serif"],
+        brand: ["var(--font-anton)", "Anton", "sans-serif"],
+        ransom: ["Impact", "Haettenschweiler", "Arial Narrow Bold", "sans-serif"],
+        display: ["Impact", "Haettenschweiler", "Arial Narrow Bold", "sans-serif"],
         marker: ["var(--font-permanent-marker)", "Permanent Marker", "cursive"],
-        mono: ["var(--font-courier-prime)", "Courier Prime", "monospace"],
-        body: ["var(--font-courier-prime)", "Courier Prime", "monospace"],
-        sans: ["var(--font-inter)", "Inter", "sans-serif"],
+        mono: ["ui-monospace", "SFMono-Regular", "Menlo", "Monaco", "Consolas", "Liberation Mono", "Courier New", "monospace"],
+        body: ["ui-monospace", "SFMono-Regular", "Menlo", "Monaco", "Consolas", "Liberation Mono", "Courier New", "monospace"],
+        sans: ["system-ui", "Segoe UI", "Roboto", "Helvetica", "Arial", "sans-serif"],
       },
       boxShadow: {
         card: "0px 35px 120px -15px #211e35",

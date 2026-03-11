@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
+import { Menu, X } from "lucide-react";
 import ThemeToggle from "@/components/theme-toggle/ThemeToggle";
 
 interface NavbarProps {
@@ -20,15 +20,16 @@ export default function Navbar({ activeSection, scrollToId }: NavbarProps) {
   return (
     <>
       <nav className="glass-nav sticky top-0 z-40 border-b-4 border-ink-black bg-paper-gray bg-paper-texture" role="navigation" aria-label="Main navigation">
-        <div className="flex justify-between items-stretch h-16 sm:h-20">
+        <div className="flex justify-between items-stretch h-14 sm:h-20 min-w-0">
           <button
             onClick={() => handleNav("home")}
-            className="flex items-center px-4 sm:px-10 border-r-4 border-ink-black bg-ink-black relative overflow-hidden group"
+            className="flex min-w-0 flex-1 items-center px-3 sm:px-10 border-r-4 border-ink-black bg-ink-black relative overflow-hidden group md:flex-none"
             aria-label="Go to home"
           >
             <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity" />
-            <span className="text-paper-gray font-ransom text-2xl sm:text-4xl tracking-widest transform -rotate-2">
-              SARTHAK ROUTRAY
+            <span className="text-paper-gray font-brand text-base sm:text-4xl tracking-[0.18em] sm:tracking-widest transform -rotate-2 leading-none truncate">
+              <span className="sm:hidden">SARTHAK</span>
+              <span className="hidden sm:inline">SARTHAK ROUTRAY</span>
             </span>
           </button>
 
@@ -59,22 +60,22 @@ export default function Navbar({ activeSection, scrollToId }: NavbarProps) {
 
           <button
             onClick={() => setMobileMenuOpen(true)}
-            className="md:hidden flex items-center px-6 border-l-4 border-ink-black hover:bg-ink-black hover:text-white cursor-pointer bg-sharpie-blue text-white"
+            className="md:hidden flex shrink-0 items-center px-4 sm:px-6 border-l-4 border-ink-black hover:bg-ink-black hover:text-white cursor-pointer bg-sharpie-blue text-white"
             aria-label="Open menu"
           >
-            <span className="material-symbols-outlined text-3xl">menu</span>
+            <Menu className="h-7 w-7 sm:h-8 sm:w-8" aria-hidden="true" />
           </button>
         </div>
       </nav>
 
       {/* Mobile menu overlay */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-50 bg-ink-black/90 backdrop-blur-sm md:hidden flex flex-col items-center justify-center gap-6" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+        <div className="fixed inset-0 z-50 bg-ink-black/90 backdrop-blur-sm md:hidden flex flex-col items-center justify-center gap-5 px-6 text-center" role="dialog" aria-modal="true" aria-label="Mobile navigation">
           <button className="absolute top-6 right-6 text-white" onClick={() => setMobileMenuOpen(false)} aria-label="Close menu">
-            <span className="material-symbols-outlined text-4xl">close</span>
+            <X className="h-10 w-10" aria-hidden="true" />
           </button>
           {["home", "projects", "about", "resume", "skills", "contact"].map((id) => (
-            <button key={id} onClick={() => handleNav(id)} className="text-3xl font-ransom text-paper-gray">
+            <button key={id} onClick={() => handleNav(id)} className="text-2xl sm:text-3xl font-brand text-paper-gray break-words">
               {id.toUpperCase()}
             </button>
           ))}

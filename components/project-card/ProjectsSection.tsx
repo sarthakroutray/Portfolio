@@ -21,14 +21,14 @@ function ProjectCard({ project, index, isExpanded, onToggle, onTagClick }: Proje
     project.description.length > 155 ? `${project.description.slice(0, 155)}...` : project.description;
 
   return (
-    <div className={`relative group reveal-glass ${index % 2 === 1 ? "mt-12 md:mt-0" : ""}`}>
-      <div className="absolute -top-6 -left-6 w-full h-full border-4 border-ink-black bg-transparent z-0" />
-      <div className="absolute -top-8 left-1/4 w-32 h-10 tape z-20 transform -rotate-2" />
+    <div className={`relative group reveal-glass overflow-hidden sm:overflow-visible ${index % 2 === 1 ? "mt-8 md:mt-0" : ""}`}>
+      <div className="absolute -top-2 -left-2 sm:-top-6 sm:-left-6 w-full h-full border-4 border-ink-black bg-transparent z-0" />
+      <div className="hidden sm:block absolute -top-8 left-1/4 w-32 h-10 tape z-20 transform -rotate-2" />
       <article className="project-glass-card floating-glass fluid-glass relative z-10 bg-paper-gray border-4 border-ink-black p-3 shadow-cutout transition-transform group-hover:-translate-y-1 group-hover:-translate-x-1">
         <div className="bg-white border-2 border-ink-black p-4 h-full flex flex-col">
-          <div className="flex justify-between items-start mb-4 gap-3">
-            <h3 className="text-3xl font-display uppercase">{project.name}</h3>
-            <span className="text-4xl leading-none font-ransom text-sharpie-blue">
+          <div className="flex flex-col sm:flex-row justify-between items-start mb-4 gap-3">
+            <h3 className="text-2xl sm:text-3xl font-display uppercase break-words">{project.name}</h3>
+            <span className="text-3xl sm:text-4xl leading-none font-ransom text-sharpie-blue shrink-0">
               {String(index + 1).padStart(2, "0")}
             </span>
           </div>
@@ -62,7 +62,7 @@ function ProjectCard({ project, index, isExpanded, onToggle, onTagClick }: Proje
             ))}
           </div>
 
-          <div className="mt-auto pt-5 border-t-2 border-dashed border-ink-black flex justify-between items-center gap-4">
+          <div className="mt-auto pt-5 border-t-2 border-dashed border-ink-black flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-4">
             <button
               onClick={onToggle}
               className="font-bold font-mono text-xs bg-paper-gray border border-ink-black px-2 py-1 uppercase hover:bg-ink-black hover:text-white"
@@ -149,12 +149,12 @@ export default function ProjectsSection({ selectedTag, setSelectedTag }: Project
   }, [filteredProjects]);
 
   return (
-    <section ref={sectionRef} id="projects" className="container mx-auto px-6 py-24 relative">
+    <section ref={sectionRef} id="projects" className="container mx-auto px-4 sm:px-6 py-16 sm:py-24 relative overflow-x-clip">
       <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-8 pb-4 border-b-4 border-dashed border-ink-black gap-4">
-        <h2 className="text-6xl sm:text-7xl md:text-9xl font-ransom text-ink-black tracking-tighter leading-none mix-blend-overlay opacity-80">
+        <h2 className="text-5xl sm:text-7xl md:text-9xl font-ransom text-ink-black tracking-tighter leading-none mix-blend-overlay opacity-80">
           THE<br />WORK
         </h2>
-        <div className="fluid-glass floating-glass reveal-glass relative bg-white p-4 border-2 border-ink-black transform rotate-2 shadow-[4px_4px_0px_0px_#0022cc]">
+        <div className="fluid-glass floating-glass reveal-glass relative w-full sm:w-auto bg-white p-4 border-2 border-ink-black sm:rotate-2 shadow-[4px_4px_0px_0px_#0022cc]">
           <span className="absolute -top-3 -right-3 w-8 h-8 bg-sharpie-blue rounded-full" />
           <p className="font-marker text-sharpie-blue text-xl">&ldquo;Stuff I actually built&rdquo;</p>
         </div>
@@ -179,7 +179,7 @@ export default function ProjectsSection({ selectedTag, setSelectedTag }: Project
         >
           Reset Project Filter
         </button>
-        <span className="font-mono text-sm ml-2">
+        <span className="font-mono text-sm sm:ml-2 w-full sm:w-auto">
           showing {filteredProjects.length}/{projects.length}
         </span>
       </div>

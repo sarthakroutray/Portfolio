@@ -56,11 +56,11 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="container mx-auto px-6 pb-24">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
+    <section id="contact" className="container mx-auto px-4 sm:px-6 pb-24 overflow-x-clip">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
         <div className="fluid-glass reveal-glass floating-glass bg-paper-gray border-4 border-ink-black p-4 sm:p-8 shadow-cutout">
           <p className="font-mono text-sm uppercase tracking-[0.25em] mb-2">Get in touch</p>
-          <h2 className="font-display text-5xl uppercase mb-8">Contact</h2>
+          <h2 className="font-display text-4xl sm:text-5xl uppercase mb-8">Contact</h2>
           <p className="font-mono text-sm border-l-4 border-sharpie-blue pl-3 mb-6">
             Open to AI/ML internships and backend engineering roles.
           </p>
@@ -75,7 +75,7 @@ export default function ContactSection() {
 
             {error && <div className="text-red-700 font-mono text-sm" role="alert">{error}</div>}
 
-            <button type="submit" className="contact-cta cursor-target w-fit px-6 py-3 bg-sharpie-blue text-white border-2 border-ink-black font-mono font-bold hover:bg-ink-black transition-colors inline-flex items-center gap-2">
+            <button type="submit" className="contact-cta cursor-target w-full sm:w-fit justify-center px-6 py-3 bg-sharpie-blue text-white border-2 border-ink-black font-mono font-bold hover:bg-ink-black transition-colors inline-flex items-center gap-2">
               {loading ? "Sending..." : "Send"}
               <span className="cta-arrow" aria-hidden="true">-&gt;</span>
             </button>
@@ -89,13 +89,13 @@ export default function ContactSection() {
               I am open to internship roles where I can own backend and AI workflow implementation and ship features used by real users.
             </p>
             <address className="space-y-4 font-mono not-italic">
-              <a href="https://github.com/sarthakroutray" target="_blank" rel="noreferrer" className="block hover:text-sharpie-blue">
+              <a href="https://github.com/sarthakroutray" target="_blank" rel="noreferrer" className="block hover:text-sharpie-blue break-all">
                 GitHub: @sarthakroutray
               </a>
-              <a href="https://www.linkedin.com/in/sarthak-routray-020583323/" target="_blank" rel="noreferrer" className="block hover:text-sharpie-blue">
+              <a href="https://www.linkedin.com/in/sarthak-routray-020583323/" target="_blank" rel="noreferrer" className="block hover:text-sharpie-blue break-words">
                 LinkedIn: Sarthak Routray
               </a>
-              <a href="mailto:sarthak.routray2006@gmail.com" className="block hover:text-sharpie-blue">
+              <a href="mailto:sarthak.routray2006@gmail.com" className="block hover:text-sharpie-blue break-all">
                 Email: sarthak.routray2006@gmail.com
               </a>
             </address>

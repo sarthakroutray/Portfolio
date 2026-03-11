@@ -10,16 +10,16 @@ interface SkillsSectionProps {
 
 export default function SkillsSection({ selectedTag, setSelectedTag }: SkillsSectionProps) {
   return (
-    <section id="skills" className="container mx-auto px-6 pb-24">
+    <section id="skills" className="container mx-auto px-4 sm:px-6 pb-24">
       <div className="max-w-6xl mx-auto">
         <div className="flex items-center justify-between flex-wrap gap-4 mb-8">
-          <h2 className="reveal-glass font-ransom text-6xl sm:text-8xl">SKILLS</h2>
+          <h2 className="reveal-glass font-ransom text-5xl sm:text-8xl">SKILLS</h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {skillGroups.map((group) => (
             <div key={group.title} className="fluid-glass reveal-glass floating-glass bg-paper-gray border-4 border-ink-black p-4 shadow-cutout">
-              <h3 className="font-display text-3xl uppercase mb-4">{group.title}</h3>
+              <h3 className="font-display text-2xl sm:text-3xl uppercase mb-4">{group.title}</h3>
               <div className="grid grid-cols-2 gap-3">
                 {group.items.map((item) => (
                   <button

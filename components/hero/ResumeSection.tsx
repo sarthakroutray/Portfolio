@@ -2,9 +2,9 @@ import { experiences, type ExperienceItem } from "@/lib/constants";
 
 export default function ResumeSection() {
   return (
-    <section id="resume" className="container mx-auto px-6 py-24">
+    <section id="resume" className="container mx-auto px-4 sm:px-6 py-16 sm:py-24">
       <div className="max-w-6xl mx-auto">
-        <h2 className="reveal-glass font-ransom text-6xl sm:text-8xl mb-12">EXPERIENCE</h2>
+        <h2 className="reveal-glass font-ransom text-5xl sm:text-8xl mb-10 sm:mb-12">EXPERIENCE</h2>
         <div className="space-y-8">
           {experiences.map((experience: ExperienceItem) => (
             <article
@@ -13,10 +13,10 @@ export default function ResumeSection() {
             >
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
                 <div>
-                  <h3 className="font-display text-3xl uppercase">{experience.title}</h3>
+                  <h3 className="font-display text-2xl sm:text-3xl uppercase">{experience.title}</h3>
                   <p className="font-mono font-bold">{experience.company_name}</p>
                 </div>
-                <span className="font-marker text-sharpie-blue text-xl">{experience.date}</span>
+                <span className="font-marker text-lg sm:text-xl text-sharpie-blue">{experience.date}</span>
               </div>
               <ul className="list-disc ml-6 font-mono space-y-2">
                 {experience.points.map((point: string) => (

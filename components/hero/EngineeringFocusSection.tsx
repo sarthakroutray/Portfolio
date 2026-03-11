@@ -8,9 +8,9 @@ export default function EngineeringFocusSection() {
   const [selectedFocus, setSelectedFocus] = useState("");
 
   return (
-    <section id="engineering-focus" className="container mx-auto px-6 pb-24">
+    <section id="engineering-focus" className="container mx-auto px-4 sm:px-6 pb-24">
       <div className="max-w-6xl mx-auto">
-        <h2 className="reveal-glass font-ransom text-6xl sm:text-8xl mb-8">ENGINEERING FOCUS</h2>
+        <h2 className="reveal-glass font-ransom text-5xl sm:text-8xl mb-8">ENGINEERING FOCUS</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {engineeringFocuses.map((focus) => (
             <button
