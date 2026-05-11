@@ -1,0 +1,23 @@
+# Backend Python environment
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+.env
+
+# ChromaDB local (only used during local testing, not production)
+chroma_local/
+*.sqlite3
+
+# Test artifacts
+.pytest_cache/
+htmlcov/
+.coverage
+
+# Backup files
+backups/
+
+# OS
+.DS_Store
+Thumbs.db

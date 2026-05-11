@@ -1,0 +1,254 @@
+{
+  "version": "1.0.0",
+  "last_updated": "2025-01-01",
+  "personal": {
+    "name": "Sarthak Routray",
+    "title": "Full-Stack Software Engineer & AI/ML Enthusiast",
+    "email": "sarthakroutray@gmail.com",
+    "phone": "+91-9819362168",
+    "location": "Mumbai, Maharashtra, India",
+    "linkedin": "https://linkedin.com/in/sarthakroutray",
+    "github": "https://github.com/sarthakroutray",
+    "portfolio": "https://sarthak.dev",
+    "summary": "Full-stack software engineer with 2+ years of experience building production-grade web applications and AI-powered systems. Specializing in React/Next.js frontends, Python/FastAPI backends, and end-to-end ML pipelines. Passionate about creating delightful user experiences backed by robust, scalable infrastructure. Currently open to full-time SDE roles and exciting freelance projects."
+  },
+  "skills": {
+    "languages": [
+      "Python",
+      "TypeScript",
+      "JavaScript",
+      "Go",
+      "SQL",
+      "Bash"
+    ],
+    "frameworks_and_libraries": [
+      "Next.js",
+      "React",
+      "FastAPI",
+      "Node.js",
+      "Express",
+      "Tailwind CSS",
+      "Framer Motion"
+    ],
+    "ai_and_ml": [
+      "PyTorch",
+      "Hugging Face Transformers",
+      "LangChain",
+      "ChromaDB",
+      "scikit-learn",
+      "Pandas",
+      "NumPy",
+      "RAG Systems",
+      "Fine-tuning LLMs"
+    ],
+    "databases": [
+      "PostgreSQL",
+      "MongoDB",
+      "Redis",
+      "SQLite",
+      "ChromaDB"
+    ],
+    "devops_and_cloud": [
+      "Docker",
+      "GitHub Actions",
+      "Vercel",
+      "Modal.com",
+      "AWS S3",
+      "Nginx",
+      "Linux"
+    ],
+    "tools": [
+      "Git",
+      "VS Code",
+      "Postman",
+      "Figma",
+      "Notion"
+    ]
+  },
+  "experience": [
+    {
+      "company": "TechVision Labs",
+      "role": "Software Engineer Intern",
+      "start_date": "May 2024",
+      "end_date": "August 2024",
+      "location": "Remote",
+      "type": "internship",
+      "achievements": [
+        "Built a real-time log anomaly detection system using Python and LSTM networks, reducing incident response time by 40%",
+        "Developed a FastAPI microservice handling 5,000+ requests/day with sub-100ms P99 latency",
+        "Migrated legacy REST endpoints to async FastAPI, improving throughput by 3x",
+        "Implemented JWT authentication and RBAC for a multi-tenant SaaS dashboard",
+        "Containerized services with Docker and set up CI/CD via GitHub Actions"
+      ]
+    },
+    {
+      "company": "Freelance / Contract",
+      "role": "Full-Stack Developer",
+      "start_date": "January 2023",
+      "end_date": "Present",
+      "location": "Remote",
+      "type": "freelance",
+      "achievements": [
+        "Delivered 8+ client projects including e-commerce platforms, portfolio websites, and internal tools",
+        "Built a SaaS MVP for a startup that onboarded 200+ users in the first month post-launch",
+        "Integrated payment gateways (Stripe, Razorpay) and automated billing workflows",
+        "Reduced client's page load time from 4.2s to 0.9s using Next.js ISR and image optimization",
+        "Managed projects end-to-end: requirements gathering, design, development, deployment"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "SentinelAI — Log Anomaly Detection System",
+      "description": "A production-grade AI-powered log monitoring system that ingests server logs in real-time, detects anomalies using LSTM networks, and alerts via a Next.js admin dashboard.",
+      "tech_stack": [
+        "Python",
+        "FastAPI",
+        "PyTorch",
+        "Next.js",
+        "PostgreSQL",
+        "Docker",
+        "Nginx",
+        "GitHub Actions"
+      ],
+      "url": "https://github.com/sarthakroutray/sentinelai",
+      "status": "production",
+      "highlights": [
+        "Processes 10,000+ log events/minute with <5ms ingestion latency",
+        "Custom LSTM model achieving 94% anomaly detection accuracy on test data",
+        "Admin dashboard with real-time WebSocket updates and interactive log explorer",
+        "Full Dockerized deployment with Nginx reverse proxy and SSL termination",
+        "Implemented custom authentication with JWT and bcrypt-hashed admin credentials"
+      ]
+    },
+    {
+      "name": "FinWise AI — Bank Statement Analyzer",
+      "description": "An intelligent bank statement parser and financial insights engine supporting PDF, CSV, XLSX, and image inputs with automatic format detection.",
+      "tech_stack": [
+        "Python",
+        "FastAPI",
+        "Tesseract OCR",
+        "pandas",
+        "pdfplumber",
+        "React",
+        "Recharts"
+      ],
+      "url": "https://github.com/sarthakroutray/finwise",
+      "status": "completed",
+      "highlights": [
+        "Auto-detects and handles 6 file formats (PDF, CSV, XLS/XLSX, HTML, images, plain text)",
+        "Parses European and Indian number formats, parenthesized negatives, and multi-line descriptions",
+        "Generates categorized spending reports with interactive charts",
+        "Confidence scoring and parse report for each transaction",
+        "Handles edge cases: merged cells, header detection, encoding mismatches"
+      ]
+    },
+    {
+      "name": "Portfolio RAG Chatbot",
+      "description": "This very portfolio backend — a serverless RAG system on Modal.com enabling visitors to query my resume conversationally using ChromaDB + sentence-transformers + Groq LLaMA.",
+      "tech_stack": [
+        "Python",
+        "Modal.com",
+        "FastAPI",
+        "ChromaDB",
+        "sentence-transformers",
+        "Groq API",
+        "Next.js"
+      ],
+      "url": "https://github.com/sarthakroutray/portfolio",
+      "status": "production",
+      "highlights": [
+        "True serverless deployment on Modal.com with scale-to-zero and $1.20/month cost",
+        "Section-aware resume chunking with cosine similarity retrieval (k=5)",
+        "SSE streaming for real-time response display",
+        "In-memory rate limiting via Modal Dict (no Redis needed)",
+        "Embedding model baked into container image — cold starts under 5 seconds"
+      ]
+    },
+    {
+      "name": "Cinematic Portfolio Website",
+      "description": "A visually stunning personal portfolio built with Next.js 15, featuring cinematic animations, dark mode, and a conversational AI assistant.",
+      "tech_stack": [
+        "Next.js",
+        "TypeScript",
+        "Tailwind CSS",
+        "Framer Motion",
+        "Three.js"
+      ],
+      "url": "https://sarthak.dev",
+      "status": "production",
+      "highlights": [
+        "Lighthouse score 95+ across all metrics",
+        "Cinematic scroll animations using Framer Motion and custom intersection observers",
+        "Dark/light mode with system preference detection",
+        "Integrated RAG chatbot for conversational resume queries",
+        "Fully responsive — optimized for mobile, tablet, and desktop"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "XYZ University of Technology",
+      "degree": "Bachelor of Technology",
+      "field": "Computer Science and Engineering",
+      "graduation_year": "2025",
+      "gpa": "8.7 / 10",
+      "location": "Bhubaneswar, Odisha",
+      "achievements": [
+        "Relevant coursework: Data Structures, Algorithms, DBMS, Operating Systems, Computer Networks, Machine Learning",
+        "Technical Secretary of the Computer Science Club (2023-2024)",
+        "Organized 3 campus hackathons with 200+ participants each"
+      ]
+    }
+  ],
+  "certifications": [
+    {
+      "name": "AWS Certified Cloud Practitioner",
+      "issuer": "Amazon Web Services",
+      "year": "2024"
+    },
+    {
+      "name": "Deep Learning Specialization",
+      "issuer": "Coursera / deeplearning.ai",
+      "year": "2023"
+    },
+    {
+      "name": "Fast.ai Practical Deep Learning",
+      "issuer": "fast.ai",
+      "year": "2023"
+    }
+  ],
+  "open_source": [
+    {
+      "project": "LangChain",
+      "contributions": "Contributed 2 bug fixes to the ChromaDB integration and improved the retrieval documentation with working examples",
+      "url": "https://github.com/langchain-ai/langchain"
+    },
+    {
+      "project": "FastAPI",
+      "contributions": "Submitted a PR improving async generator streaming documentation with SSE examples",
+      "url": "https://github.com/tiangolo/fastapi"
+    }
+  ],
+  "interests_and_availability": {
+    "looking_for": [
+      "Full-time SDE roles",
+      "Backend or Full-stack positions",
+      "AI/ML engineering roles",
+      "Open to remote and hybrid"
+    ],
+    "available_from": "July 2025",
+    "preferred_locations": [
+      "Remote",
+      "Bangalore",
+      "Hyderabad",
+      "Pune"
+    ],
+    "interests": [
+      "Building AI-native applications",
+      "Open source contribution",
+      "Developer tooling",
+      "System design"
+    ]
+  }
+}

@@ -1,23 +1,7 @@
 import type { Metadata } from "next";
-import { Anton, Permanent_Marker } from "next/font/google";
 
 import { ThemeProvider } from "@/components/theme-toggle/ThemeProvider";
 import "@/styles/globals.css";
-
-/* ===== Keep only the brand and accent fonts as webfonts ===== */
-const anton = Anton({
-  subsets: ["latin"],
-  weight: "400",
-  variable: "--font-anton",
-  display: "swap",
-});
-
-const permanentMarker = Permanent_Marker({
-  subsets: ["latin"],
-  weight: "400",
-  variable: "--font-permanent-marker",
-  display: "swap",
-});
 
 const siteUrl = "https://sarthakroutray.vercel.app";
 
@@ -93,11 +77,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html
-      lang="en"
-      suppressHydrationWarning
-      className={`${anton.variable} ${permanentMarker.variable}`}
-    >
+      <html
+        lang="en"
+        suppressHydrationWarning
+        className="dark"
+      >
       <head>
         <script
           type="application/ld+json"

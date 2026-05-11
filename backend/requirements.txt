@@ -1,0 +1,24 @@
+# Core Modal + FastAPI
+modal==0.73.0
+fastapi[standard]==0.115.5
+pydantic==2.10.3
+python-multipart==0.0.20
+
+# RAG Pipeline
+chromadb==0.5.20
+sentence-transformers==3.3.1
+
+# CPU-only PyTorch (smaller than default, ~600MB vs 2.5GB)
+# Install separately with: pip install torch --extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.5.1
+
+# LLM
+groq==0.13.1
+
+# HTTP client (for health check)
+httpx==0.28.1
+
+# Dev / Testing
+pytest==8.3.4
+pytest-asyncio==0.24.0
+httpx==0.28.1   # also used in tests as HTTPX async client
