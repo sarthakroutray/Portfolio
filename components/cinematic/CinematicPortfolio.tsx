@@ -24,14 +24,18 @@ import GlassSurface from "./GlassSurface";
 import { CinematicLoader } from "@/components/ui/CinematicLoader";
 
 const VIDEO_DURATION = 20; // seconds
-const VIDEO_SRC =
-	"/Digital_Universe_Zoom_A_person_walks_through_a_dimly_lit_forest_the_IwGrB6gO.mp4";
+const VIDEO_WEBM_SRC =
+	"/Digital_Universe_Zoom_A_person_walks_through_a_dimly_lit_forest_the_IwGrB6gO - FPS - Videobolt.net.webm";
+const VIDEO_MP4_SRC =
+	"/Digital_Universe_Zoom_A_person_walks_through_a_dimly_lit_forest_the_IwGrB6gO - FPS - Videobolt.net.mp4";
 
 // Seek threshold: 0.03s prevents micro-seeks that thrash the decoder while maintaining high visual framerate
 const SEEK_THRESHOLD = 0.02;
-const MOBILE_SEEK_THRESHOLD = 0.12;
+const MOBILE_SEEK_THRESHOLD = 0.05;
 const SEEK_TIMEOUT_MS = 900;
-const MOBILE_MAX_FPS = 24;
+const MOBILE_MAX_FPS = 30;
+const DESKTOP_MAX_FPS = 60;
+const MAX_PRELOADER_MS = 1600;
 
 function getBufferedEnd(video: HTMLVideoElement): number {
 	const { buffered } = video;
@@ -87,6 +91,8 @@ export default function CinematicPortfolio() {
 	const preloaderRef = useRef<HTMLDivElement>(null);
 	const progressFillRef = useRef<HTMLDivElement>(null);
 	const sectionInnerRefs = useRef<(HTMLDivElement | null)[]>([]);
+	const scrollRafRef = useRef<number | null>(null);
+	const preloaderTimeoutRef = useRef<number | null>(null);
 
 	// ─── Object-fit cover ──────────────────────────────────────────────────────
 	const drawCover = useCallback(() => {
@@ -130,16 +136,19 @@ export default function CinematicPortfolio() {
 
 	// ─── Scroll → only update TARGET time ──────────────────────────────────────
 	const handleScroll = useCallback(() => {
-		const scrollable =
-			document.documentElement.scrollHeight - window.innerHeight;
-		if (scrollable <= 0) return;
-		const progress = Math.min(Math.max(window.scrollY / scrollable, 0), 1);
-		targetTimeRef.current = progress * VIDEO_DURATION;
+		if (scrollRafRef.current !== null) return;
+		scrollRafRef.current = requestAnimationFrame(() => {
+			scrollRafRef.current = null;
+			const scrollable =
+				document.documentElement.scrollHeight - window.innerHeight;
+			if (scrollable <= 0) return;
+			const progress = Math.min(Math.max(window.scrollY / scrollable, 0), 1);
+			targetTimeRef.current = progress * VIDEO_DURATION;
 
-		// Update progress bar
-		if (progressFillRef.current) {
-			progressFillRef.current.style.width = `${progress * 100}%`;
-		}
+			if (progressFillRef.current) {
+				progressFillRef.current.style.width = `${progress * 100}%`;
+			}
+		});
 	}, []);
 
 	// ─── RAF loop ─────────────────────────────────────────────────────────
@@ -150,7 +159,8 @@ export default function CinematicPortfolio() {
 			const liteMode = isLiteModeRef.current;
 			const lerpFactor = liteMode ? 0.08 : 0.04;
 			const seekThreshold = liteMode ? MOBILE_SEEK_THRESHOLD : SEEK_THRESHOLD;
-			const minFrameInterval = liteMode ? 1000 / MOBILE_MAX_FPS : 0;
+			const maxFps = liteMode ? MOBILE_MAX_FPS : DESKTOP_MAX_FPS;
+			const minFrameInterval = 1000 / maxFps;
 			const now = performance.now();
 
 			// Lower lerp (0.04) creates a "weighty", ultra-smooth cinematic feel
@@ -207,15 +217,18 @@ export default function CinematicPortfolio() {
 		// Initialize smooth scrolling
 		isLiteModeRef.current = shouldUseLitePlayback();
 
-		const lenis = new Lenis({
-			autoRaf: true,
-			lerp: isLiteModeRef.current ? 0.14 : 0.06,
-			smoothWheel: !isLiteModeRef.current,
-		});
-
 		const prefersReduced = window.matchMedia(
 			"(prefers-reduced-motion: reduce)",
 		).matches;
+
+		const shouldUseLenis = !prefersReduced && !isLiteModeRef.current;
+		const lenis = shouldUseLenis
+			? new Lenis({
+				autoRaf: true,
+				lerp: 0.06,
+				smoothWheel: true,
+			})
+			: null;
 
 		const onSeeked = () => {
 			drawCover();
@@ -227,7 +240,11 @@ export default function CinematicPortfolio() {
 			isPendingSeekRef.current = false;
 		};
 
-		const onCanPlayThrough = () => {
+		const completePreload = () => {
+			if (preloaderTimeoutRef.current !== null) {
+				window.clearTimeout(preloaderTimeoutRef.current);
+				preloaderTimeoutRef.current = null;
+			}
 			isReadyRef.current = true;
 			drawCover();
 			const pl = preloaderRef.current;
@@ -244,15 +261,19 @@ export default function CinematicPortfolio() {
 		video.addEventListener("stalled", onSeekRecover);
 		video.addEventListener("waiting", onSeekRecover);
 		video.addEventListener("error", onSeekRecover);
-		video.addEventListener("canplay", onCanPlayThrough, { once: true });
+		video.addEventListener("loadeddata", completePreload, { once: true });
 
 		if (video.readyState >= 3) {
-			onCanPlayThrough();
+			completePreload();
 		}
 
 		if (prefersReduced) {
-			onCanPlayThrough();
+			completePreload();
 		}
+
+		preloaderTimeoutRef.current = window.setTimeout(() => {
+			completePreload();
+		}, MAX_PRELOADER_MS);
 
 		window.addEventListener("scroll", handleScroll, { passive: true });
 		window.addEventListener("resize", resizeCanvas, { passive: true });
@@ -262,14 +283,23 @@ export default function CinematicPortfolio() {
 		}
 
 		return () => {
-			lenis.destroy();
+			if (lenis) {
+				lenis.destroy();
+			}
 			if (rafRef.current) {
 				cancelAnimationFrame(rafRef.current);
+			}
+			if (scrollRafRef.current !== null) {
+				cancelAnimationFrame(scrollRafRef.current);
+			}
+			if (preloaderTimeoutRef.current !== null) {
+				window.clearTimeout(preloaderTimeoutRef.current);
 			}
 			video.removeEventListener("seeked", onSeeked);
 			video.removeEventListener("stalled", onSeekRecover);
 			video.removeEventListener("waiting", onSeekRecover);
 			video.removeEventListener("error", onSeekRecover);
+			video.removeEventListener("loadeddata", completePreload);
 			window.removeEventListener("scroll", handleScroll);
 			window.removeEventListener("resize", resizeCanvas);
 		};
@@ -312,14 +342,16 @@ export default function CinematicPortfolio() {
 			{/* ── Hidden video (frame source — never plays, only seeks) ─────────── */}
 			<video
 				ref={videoRef}
-				src={VIDEO_SRC}
 				muted
 				playsInline
 				preload="auto"
 				className={styles.hiddenVideo}
 				aria-hidden="true"
 				tabIndex={-1}
-			/>
+			>
+				<source src={VIDEO_WEBM_SRC} type="video/webm" />
+				<source src={VIDEO_MP4_SRC} type="video/mp4" />
+			</video>
 
 			{/* ── Canvas (fixed, GPU-painted) ───────────────────────────────────── */}
 			<canvas
@@ -866,7 +898,7 @@ export default function CinematicPortfolio() {
 						ref={(el) => {
 							sectionInnerRefs.current[2] = el;
 						}}
-					>
+									>
 						<h2 className="font-headline-lg text-5xl md:text-6xl text-white mb-20 text-center italic">
 							Experience
 						</h2>
