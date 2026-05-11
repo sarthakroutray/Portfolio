@@ -5,6 +5,11 @@ import { useMemo } from "react";
 const SQUARE_COUNT = 12;
 const SPEED = 0.35;
 
+function seededRandom(seed: number): number {
+  const x = Math.sin(seed * 9999.91) * 10000;
+  return x - Math.floor(x);
+}
+
 export function CinematicLoader() {
   const squares = useMemo(
     () =>
@@ -26,10 +31,10 @@ export function CinematicLoader() {
     () =>
       Array.from({ length: 15 }, (_, i) => ({
         id: i,
-        left: `${Math.random() * 100}%`,
-        top: `${Math.random() * 100}%`,
-        duration: `${3 + Math.random() * 4}s`,
-        delay: `${Math.random() * 3}s`,
+        left: `${seededRandom(i + 1) * 100}%`,
+        top: `${seededRandom(i + 101) * 100}%`,
+        duration: `${3 + seededRandom(i + 201) * 4}s`,
+        delay: `${seededRandom(i + 301) * 3}s`,
       })),
     []
   );

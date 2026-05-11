@@ -29,6 +29,22 @@ const VIDEO_SRC =
 
 // Seek threshold: 0.03s prevents micro-seeks that thrash the decoder while maintaining high visual framerate
 const SEEK_THRESHOLD = 0.02;
+const SEEK_TIMEOUT_MS = 900;
+
+function getBufferedEnd(video: HTMLVideoElement): number {
+	const { buffered } = video;
+	if (!buffered || buffered.length === 0) return 0;
+
+	for (let i = 0; i < buffered.length; i += 1) {
+		const start = buffered.start(i);
+		const end = buffered.end(i);
+		if (video.currentTime >= start && video.currentTime <= end) {
+			return end;
+		}
+	}
+
+	return buffered.end(buffered.length - 1);
+}
 
 export default function CinematicPortfolio() {
 	const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -42,6 +58,7 @@ export default function CinematicPortfolio() {
 	const isReadyRef = useRef(false);
 	// One seek at a time — prevents decoder thrashing on rapid scroll.
 	const isPendingSeekRef = useRef(false);
+	const seekStartedAtRef = useRef(0);
 	const lastDrawnTimeRef = useRef(-1);
 
 	// Time tracking
@@ -119,13 +136,23 @@ export default function CinematicPortfolio() {
 				(targetTimeRef.current - lerpedTimeRef.current) * 0.04;
 			lerpedTimeRef.current = lerped;
 			const clamped = Math.max(0, Math.min(lerped, VIDEO_DURATION));
+			const bufferedEnd = getBufferedEnd(video);
+			const safeSeekTarget = Math.max(0, Math.min(clamped, bufferedEnd - 0.08));
+
+			if (
+				isPendingSeekRef.current &&
+				performance.now() - seekStartedAtRef.current > SEEK_TIMEOUT_MS
+			) {
+				isPendingSeekRef.current = false;
+			}
 
 			if (
 				!isPendingSeekRef.current &&
-				Math.abs(video.currentTime - clamped) > SEEK_THRESHOLD
+				Math.abs(video.currentTime - safeSeekTarget) > SEEK_THRESHOLD
 			) {
 				isPendingSeekRef.current = true;
-				video.currentTime = clamped;
+				seekStartedAtRef.current = performance.now();
+				video.currentTime = safeSeekTarget;
 			}
 
 			const timeDelta = Math.abs(video.currentTime - lastDrawnTimeRef.current);
@@ -168,6 +195,10 @@ export default function CinematicPortfolio() {
 			isPendingSeekRef.current = false;
 		};
 
+		const onSeekRecover = () => {
+			isPendingSeekRef.current = false;
+		};
+
 		const onCanPlayThrough = () => {
 			isReadyRef.current = true;
 			drawCover();
@@ -182,6 +213,9 @@ export default function CinematicPortfolio() {
 		};
 
 		video.addEventListener("seeked", onSeeked);
+		video.addEventListener("stalled", onSeekRecover);
+		video.addEventListener("waiting", onSeekRecover);
+		video.addEventListener("error", onSeekRecover);
 		video.addEventListener("canplay", onCanPlayThrough, { once: true });
 
 		if (video.readyState >= 3) {
@@ -205,6 +239,9 @@ export default function CinematicPortfolio() {
 				cancelAnimationFrame(rafRef.current);
 			}
 			video.removeEventListener("seeked", onSeeked);
+			video.removeEventListener("stalled", onSeekRecover);
+			video.removeEventListener("waiting", onSeekRecover);
+			video.removeEventListener("error", onSeekRecover);
 			window.removeEventListener("scroll", handleScroll);
 			window.removeEventListener("resize", resizeCanvas);
 		};
