@@ -10,6 +10,14 @@ function seededRandom(seed: number): number {
   return x - Math.floor(x);
 }
 
+function asPercent(value: number): string {
+  return `${(value * 100).toFixed(4)}%`;
+}
+
+function asSeconds(value: number): string {
+  return `${value.toFixed(4)}s`;
+}
+
 export function CinematicLoader() {
   const squares = useMemo(
     () =>
@@ -31,10 +39,10 @@ export function CinematicLoader() {
     () =>
       Array.from({ length: 15 }, (_, i) => ({
         id: i,
-        left: `${seededRandom(i + 1) * 100}%`,
-        top: `${seededRandom(i + 101) * 100}%`,
-        duration: `${3 + seededRandom(i + 201) * 4}s`,
-        delay: `${seededRandom(i + 301) * 3}s`,
+        left: asPercent(seededRandom(i + 1)),
+        top: asPercent(seededRandom(i + 101)),
+        duration: asSeconds(3 + seededRandom(i + 201) * 4),
+        delay: asSeconds(seededRandom(i + 301) * 3),
       })),
     []
   );
@@ -83,7 +91,10 @@ export function CinematicLoader() {
               borderRadius: "50%",
               left: star.left,
               top: star.top,
-              animation: `loader-glow ${star.duration} ease-in-out infinite`,
+              animationName: "loader-glow",
+              animationDuration: star.duration,
+              animationTimingFunction: "ease-in-out",
+              animationIterationCount: "infinite",
               animationDelay: star.delay,
             }}
           />

@@ -29,7 +29,9 @@ const VIDEO_SRC =
 
 // Seek threshold: 0.03s prevents micro-seeks that thrash the decoder while maintaining high visual framerate
 const SEEK_THRESHOLD = 0.02;
+const MOBILE_SEEK_THRESHOLD = 0.12;
 const SEEK_TIMEOUT_MS = 900;
+const MOBILE_MAX_FPS = 24;
 
 function getBufferedEnd(video: HTMLVideoElement): number {
 	const { buffered } = video;
@@ -46,6 +48,20 @@ function getBufferedEnd(video: HTMLVideoElement): number {
 	return buffered.end(buffered.length - 1);
 }
 
+function shouldUseLitePlayback(): boolean {
+	if (typeof window === "undefined") return false;
+
+	const isSmallScreen = window.matchMedia("(max-width: 820px)").matches;
+	const connection = (navigator as Navigator & {
+		connection?: { saveData?: boolean; effectiveType?: string };
+	}).connection;
+	const saveData = connection?.saveData === true;
+	const net = connection?.effectiveType ?? "";
+	const slowNetwork = net === "slow-2g" || net === "2g" || net === "3g";
+
+	return isSmallScreen || saveData || slowNetwork;
+}
+
 export default function CinematicPortfolio() {
 	const canvasRef = useRef<HTMLCanvasElement>(null);
 	const videoRef = useRef<HTMLVideoElement>(null);
@@ -60,6 +76,8 @@ export default function CinematicPortfolio() {
 	const isPendingSeekRef = useRef(false);
 	const seekStartedAtRef = useRef(0);
 	const lastDrawnTimeRef = useRef(-1);
+	const lastDrawAtRef = useRef(0);
+	const isLiteModeRef = useRef(false);
 
 	// Time tracking
 	const targetTimeRef = useRef(0);
@@ -128,12 +146,18 @@ export default function CinematicPortfolio() {
 	const rafLoop = useCallback(() => {
 		const video = videoRef.current;
 
-		if (isReadyRef.current && video) {
+		if (isReadyRef.current && video && !document.hidden) {
+			const liteMode = isLiteModeRef.current;
+			const lerpFactor = liteMode ? 0.08 : 0.04;
+			const seekThreshold = liteMode ? MOBILE_SEEK_THRESHOLD : SEEK_THRESHOLD;
+			const minFrameInterval = liteMode ? 1000 / MOBILE_MAX_FPS : 0;
+			const now = performance.now();
+
 			// Lower lerp (0.04) creates a "weighty", ultra-smooth cinematic feel
 			// and gives the H.264 decoder time to keep up without skipping massive frame gaps.
 			const lerped =
 				lerpedTimeRef.current +
-				(targetTimeRef.current - lerpedTimeRef.current) * 0.04;
+				(targetTimeRef.current - lerpedTimeRef.current) * lerpFactor;
 			lerpedTimeRef.current = lerped;
 			const clamped = Math.max(0, Math.min(lerped, VIDEO_DURATION));
 			const bufferedEnd = getBufferedEnd(video);
@@ -148,17 +172,19 @@ export default function CinematicPortfolio() {
 
 			if (
 				!isPendingSeekRef.current &&
-				Math.abs(video.currentTime - safeSeekTarget) > SEEK_THRESHOLD
+				Math.abs(video.currentTime - safeSeekTarget) > seekThreshold
 			) {
 				isPendingSeekRef.current = true;
 				seekStartedAtRef.current = performance.now();
 				video.currentTime = safeSeekTarget;
 			}
 
+			const canDrawNow = now - lastDrawAtRef.current >= minFrameInterval;
 			const timeDelta = Math.abs(video.currentTime - lastDrawnTimeRef.current);
-			if (timeDelta > 0.01) {
+			if (canDrawNow && timeDelta > 0.01) {
 				drawCover();
 				lastDrawnTimeRef.current = video.currentTime;
+				lastDrawAtRef.current = now;
 			}
 		}
 
@@ -179,10 +205,12 @@ export default function CinematicPortfolio() {
 		resizeCanvas();
 
 		// Initialize smooth scrolling
+		isLiteModeRef.current = shouldUseLitePlayback();
+
 		const lenis = new Lenis({
 			autoRaf: true,
-			lerp: 0.06,
-			smoothWheel: true,
+			lerp: isLiteModeRef.current ? 0.14 : 0.06,
+			smoothWheel: !isLiteModeRef.current,
 		});
 
 		const prefersReduced = window.matchMedia(
